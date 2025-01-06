@@ -1,6 +1,7 @@
 # Log file setup and rotation
 import logging
 from logging.handlers import RotatingFileHandler
+from monitor_state import MonitorState
 
 # Function to setup logging configuration
 def setup_logging():

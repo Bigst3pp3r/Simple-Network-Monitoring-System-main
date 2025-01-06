@@ -1,11 +1,15 @@
- # Entry point for the application
- # main.py
+# Entry point for the application
+# main.py
+
 import threading
 from filters import get_filter_choice
 from logging_setup import setup_logging
 from packet_processing import process_packet
 from traffic_summary import display_summary
 from monitor_state import MonitorState
+from alerts import check_alert_conditions
+
+
 
 # Main function to initialize and run the network monitoring system
 def main():
@@ -14,17 +18,8 @@ def main():
 
     This function serves as the entry point for the application. It sets up logging,
     initializes the shared state for packet monitoring, gets the user-defined filter,
-    starts a thread for displaying real-time traffic summaries, and begins packet
-    capture using Scapy.
-
-    The function performs the following steps:
-    1. Sets up logging
-    2. Initializes the shared state
-    3. Gets the user-defined filter
-    4. Starts a thread for displaying traffic summaries
-    5. Begins packet capture using Scapy with the specified filter
-
-    No parameters are required for this function.
+    starts threads for displaying real-time traffic summaries and triggering alerts,
+    and begins packet capture using Scapy.
 
     Returns:
         None
@@ -43,11 +38,19 @@ def main():
 
     # Start the traffic summary thread to display real-time updates
     summary_thread = threading.Thread(
-        target=display_summary,  # Target function to run
+        target=display_summary,
         args=(state,),  # Pass the shared state to the thread
-        daemon=True,  # Daemon thread allows program to exit when main thread ends
+        daemon=True,
     )
     summary_thread.start()
+
+    # Start the alert monitoring thread
+    alert_thread = threading.Thread(
+        target=alert_monitor,  # Alert monitoring function
+        args=(state,),  # Pass the shared state to the alert system
+        daemon=True,
+    )
+    alert_thread.start()
 
     try:
         # Import sniffing functionality from Scapy
@@ -63,5 +66,29 @@ def main():
         print(f"Error occurred: {e}")
 
 
+def alert_monitor(state):
+    """
+    Monitor for alert conditions in a separate thread.
+
+    This function continuously checks the shared monitoring state for any conditions
+    that meet predefined alert thresholds and triggers alerts accordingly.
+
+    Args:
+        state (MonitorState): The shared state object for monitoring.
+
+    Returns:
+        None
+    """
+    while True:
+        check_alert_conditions(
+            state.packet_count, state.protocol_counter, state.ip_counter, state
+        )
+        # Check for alerts at regular intervals (e.g., every 5 seconds)
+        threading.Event().wait(5)
+
+
 if __name__ == "__main__":
     main()  # Run the program
+
+
+
