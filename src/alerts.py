@@ -3,6 +3,14 @@ import logging
 from datetime import datetime
 from database.database import save_alert  # Import save_alert from the database module
 
+# Configure logging for alerts
+alerts_log_file = "alerts_log.txt"
+logging.basicConfig(
+    filename=alerts_log_file,
+    level=logging.INFO,
+    format="%(asctime)s | ALERT: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 
 # Example threshold values
 HIGH_PACKET_RATE_THRESHOLD = 100  # Packets per second
