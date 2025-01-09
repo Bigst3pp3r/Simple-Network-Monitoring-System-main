@@ -1,11 +1,16 @@
-# monitor_state.py
-
 from collections import Counter
 import threading
 
 class MonitorState:
     """
     Shared state for network monitoring.
+
+    Attributes:
+        packet_count (int): Total number of packets captured.
+        protocol_counter (Counter): Tracks the number of packets by protocol.
+        ip_counter (Counter): Tracks the number of packets by IP address.
+        lock (threading.Lock): Ensures thread-safe access to shared state.
+        is_active (bool): Indicates whether monitoring is currently active.
     """
     def __init__(self):
         self.packet_count = 0  # Total packets captured
@@ -17,6 +22,34 @@ class MonitorState:
     def toggle_activity(self):
         """
         Toggle the monitoring activity state.
+
+        Returns:
+            bool: The new state of `is_active` after toggling.
         """
         with self.lock:
             self.is_active = not self.is_active
+            return self.is_active
+
+    def reset_counters(self):
+        """
+        Reset packet count, protocol statistics, and IP counters.
+        """
+        with self.lock:
+            self.packet_count = 0
+            self.protocol_counter.clear()
+            self.ip_counter.clear()
+
+    def get_state(self):
+        """
+        Retrieve the current monitoring state.
+
+        Returns:
+            dict: A dictionary containing the current monitoring statistics.
+        """
+        with self.lock:
+            return {
+                "packet_count": self.packet_count,
+                "protocol_counter": dict(self.protocol_counter),
+                "ip_counter": dict(self.ip_counter),
+                "is_active": self.is_active
+            }

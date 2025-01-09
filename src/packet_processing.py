@@ -2,6 +2,7 @@
 from scapy.layers.inet import IP
 from datetime import datetime
 from monitor_state import MonitorState
+from database.database import save_packet  # Import save_packet from the database module
 
 # Protocol mapping for translating protocol numbers to names
 protocol_map = {
@@ -14,7 +15,7 @@ protocol_map = {
 # Function to process and analyze packets
 def process_packet(packet, state: MonitorState):
     """
-    Processes a single captured packet, updating monitoring state.
+    Processes a single captured packet, updating monitoring state and saving to the database.
     
     Args:
         packet: The captured packet to process.
@@ -45,6 +46,11 @@ def process_packet(packet, state: MonitorState):
             log_entry = f"{timestamp}, Source: {src_ip}, Destination: {dst_ip}, Protocol: {protocol}"
             print(log_entry)
 
+            # Save packet details to the database
+            try:
+                save_packet(timestamp, src_ip, dst_ip, protocol)
+            except Exception as db_error:
+                print(f"Error saving packet to the database: {db_error}")
+
     except Exception as e:
         print(f"Error processing packet: {e}")
-

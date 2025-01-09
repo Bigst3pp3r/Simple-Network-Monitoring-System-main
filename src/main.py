@@ -8,6 +8,7 @@ from packet_processing import process_packet
 from traffic_summary import display_summary
 from monitor_state import MonitorState
 from alerts import check_alert_conditions
+from database.database import initialize_database, save_packet, save_alert
 
 
 
@@ -27,6 +28,9 @@ def main():
     Raises:
         Exception: If an error occurs during packet capture or processing.
     """
+    # Initialize the database for storing packet data and alerts
+    initialize_database()
+    
     # Initialize logging setup
     setup_logging()
 

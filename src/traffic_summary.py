@@ -34,10 +34,16 @@ def display_summary(state: MonitorState):
             print(f"Total Packets Captured: {state.packet_count}")
             print(f"Protocol Breakdown: {dict(state.protocol_counter)}")
             print("Top Talkers (IP Addresses):")
-            for ip, count in state.ip_counter.most_common(5):
-                print(f"    - {ip}: {count} packets")
-            print(f"Last Update: {
-                  datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            
+            # Ensure `ip_counter` supports `most_common`
+            if hasattr(state.ip_counter, "most_common"):
+                for ip, count in state.ip_counter.most_common(5):
+                    print(f"    - {ip}: {count} packets")
+            else:
+                for ip, count in list(state.ip_counter.items())[:5]:
+                    print(f"    - {ip}: {count} packets")
+            
+            print(f"Last Update: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             print("---------------------------------\n")
 
             # Check for alert conditions (integrated here)
@@ -45,7 +51,7 @@ def display_summary(state: MonitorState):
                 packet_count=state.packet_count,
                 protocol_counter=state.protocol_counter,
                 ip_counter=state.ip_counter,
-                monitor_state=state  # pass the shared state to alert system
+                monitor_state=state  # Pass the shared state to the alert system
             )
 
         # Wait for 5 seconds before refreshing the summary
