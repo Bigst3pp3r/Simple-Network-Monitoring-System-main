@@ -1,5 +1,6 @@
 from collections import Counter
 import threading
+import time
 
 class MonitorState:
     """
@@ -12,12 +13,16 @@ class MonitorState:
         lock (threading.Lock): Ensures thread-safe access to shared state.
         is_active (bool): Indicates whether monitoring is currently active.
     """
+       
     def __init__(self):
         self.packet_count = 0  # Total packets captured
         self.protocol_counter = Counter()  # Protocol statistics
         self.ip_counter = Counter()  # IP address statistics
+        self.traffic_volume = 0  # Total traffic volume in bytes
+        self.last_volume_timestamp = time.time()  # Last volume calculation timestamp
         self.lock = threading.Lock()  # Thread-safety lock
         self.is_active = True  # Flag to control monitoring activity
+
 
     def toggle_activity(self):
         """

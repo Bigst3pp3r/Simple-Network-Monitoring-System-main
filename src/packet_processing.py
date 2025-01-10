@@ -32,18 +32,26 @@ def process_packet(packet, state: MonitorState):
                 src_ip = packet[IP].src
                 dst_ip = packet[IP].dst
 
-                # Update IP address counters
-                state.ip_counter[src_ip] += 1
-                state.ip_counter[dst_ip] += 1
+                # Count each IP only once per packet
+                unique_ips = {src_ip, dst_ip}
+                for ip in unique_ips:
+                    state.ip_counter[ip] += 1
 
                 # Identify the protocol and update protocol counters
                 proto_number = packet[IP].proto
                 protocol = protocol_map.get(proto_number, f"Unknown ({proto_number})")
                 state.protocol_counter[protocol] += 1
 
+                # Update traffic volume
+                packet_size = len(packet)  # Total bytes in the packet
+                state.traffic_volume += packet_size
+
             # Log packet details
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            log_entry = f"{timestamp}, Source: {src_ip}, Destination: {dst_ip}, Protocol: {protocol}"
+            log_entry = (
+                f"{timestamp}, Source: {src_ip}, Destination: {dst_ip}, "
+                f"Protocol: {protocol}, Size: {packet_size} bytes"
+            )
             print(log_entry)
 
             # Save packet details to the database
