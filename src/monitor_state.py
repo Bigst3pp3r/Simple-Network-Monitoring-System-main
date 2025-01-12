@@ -22,7 +22,13 @@ class MonitorState:
         self.last_volume_timestamp = time.time()  # Last volume calculation timestamp
         self.lock = threading.Lock()  # Thread-safety lock
         self.is_active = True  # Flag to control monitoring activity
-
+        
+    # Custom alert thresholds
+        self.alert_thresholds = {
+            "packet_rate": 100,  # Packets per second
+            "protocol_limits": {},  # e.g., {"TCP": 500, "UDP": 1000}
+            "ip_limits": {},  # e.g., {"192.168.0.1": 200}
+        }
 
     def toggle_activity(self):
         """
