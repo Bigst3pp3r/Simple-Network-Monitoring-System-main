@@ -72,22 +72,21 @@ def check_blacklisted_ips(ip_counter):
         if ip in ip_counter:
             log_alert(f"Traffic involving blacklisted IP {ip}: {ip_counter[ip]} packets.")
 
-def log_alert(message):
+def log_alert(message, alert_type="General", severity="Medium"):
     """
     Logs and saves alert messages to the database.
 
     Args:
-        message: The alert message to log and save.
+        message (str): The alert message to log and save.
+        alert_type (str): The category/type of the alert.
+        severity (str): The severity of the alert.
     """
     # Record the current timestamp
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Print and log the alert
-    print(f"ALERT: {message}")
-    logging.info(message)
+    print(f"ALERT: {message} [Type: {alert_type}, Severity: {severity}]")
+    logging.info(f"{message} [Type: {alert_type}, Severity: {severity}]")
 
     # Save the alert to the database
-    try:
-        save_alert(timestamp, message)
-    except Exception as e:
-        print(f"Error saving alert to database: {e}")
+    save_alert(timestamp, message, alert_type, severity)
