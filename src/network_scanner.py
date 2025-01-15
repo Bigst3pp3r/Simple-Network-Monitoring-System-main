@@ -1,53 +1,41 @@
 from scapy.all import ARP, Ether, srp
-import socket
+import scapy.all as scapy
+from tabulate import tabulate
 
-def scan_network(ip_range="192.168.0.1/24"):
+def scan_network(network_ip):
     """
-    Scans the local network for devices using ARP requests.
+    Scans the network for devices and formats the results in a table.
 
     Args:
-        ip_range (str): The IP range to scan (default is the common private network range).
+        network_ip (str): The subnet or range to scan (e.g., '192.168.1.0/24').
 
     Returns:
-        list[dict]: A list of dictionaries with device details (IP, MAC, hostname).
+        None
     """
-    print("Scanning the network. Please wait...")
+    print(f"Scanning network: {network_ip}...")
+
+    # Send ARP requests and gather responses
+    arp_request = scapy.ARP(pdst=network_ip)
+    broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
+    arp_request_broadcast = broadcast / arp_request
+    answered_list = scapy.srp(arp_request_broadcast, timeout=2, verbose=False)[0]
+
+    # Process the responses
     devices = []
-    
-    try:
-        # Create an ARP request packet
-        arp = ARP(pdst=ip_range)
-        ether = Ether(dst="ff:ff:ff:ff:ff:ff")  # Broadcast MAC address
-        packet = ether / arp
+    for response in answered_list:
+        devices.append({
+            "IP Address": response[1].psrc,
+            "MAC Address": response[1].hwsrc,
+        })
 
-        # Send the packet and capture the response
-        result = srp(packet, timeout=3, verbose=0)[0]
-
-        for sent, received in result:
-            # Resolve hostname (optional)
-            try:
-                hostname = socket.gethostbyaddr(received.psrc)[0]
-            except socket.herror:
-                hostname = "Unknown"
-
-            # Add the device details to the list
-            devices.append({
-                "ip": received.psrc,
-                "mac": received.hwsrc,
-                "hostname": hostname,
-            })
-
-        return devices
-    except Exception as e:
-        print(f"Error during network scan: {e}")
-        return []
-
-if __name__ == "__main__":
-    # Example usage
-    devices = scan_network()
     if devices:
-        print("\n--- Devices Found ---")
-        for idx, device in enumerate(devices, 1):
-            print(f"{idx}. IP: {device['ip']}, MAC: {device['mac']}, Hostname: {device['hostname']}")
+        # Print the results in a table format
+        print("\nDevices Found:")
+        print(tabulate(devices, headers="keys", tablefmt="grid"))
     else:
-        print("No devices found.")
+        print("\nNo devices found on the network.")
+
+# Example usage
+if __name__ == "__main__":
+    network = input("Enter the network range (e.g., 192.168.1.0/24): ").strip()
+    scan_network(network)

@@ -94,13 +94,12 @@ def main():
         elif choice == "3":
             start_monitoring(chosen_filter)
         elif choice == "4":
-            devices = scan_network()
-            if devices:
-                print("\n--- Devices Found ---")
-                for idx, device in enumerate(devices, 1):
-                    print(f"{idx}. IP: {device['ip']}, MAC: {device['mac']}, Hostname: {device['hostname']}")
+            # Prompt the user for the network IP range
+            network_ip = input("Enter the network IP range (e.g., 192.168.1.0/24): ").strip()
+            if network_ip:
+                scan_network(network_ip)  # Pass the network_ip to the function
             else:
-                print("No devices found.")
+                print("Invalid input. Please enter a valid network IP range.")
         elif choice == "5":
             print("Exiting...")
             break
