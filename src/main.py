@@ -6,6 +6,8 @@ from traffic_summary import display_summary
 from monitor_state import MonitorState
 from alerts import check_alert_conditions
 from database.database import initialize_database, save_packet, save_alert
+from network_scanner import scan_network
+
 
 def alert_monitor(state):
     """
@@ -76,25 +78,35 @@ def main():
 
     while True:
         print("\n--- Network Monitoring System ---")
-        print("1. Start Packet Monitoring")
-        print("2. Set Filters")
-        print("3. Manage Thresholds")
-        print("4. Exit")
+        print("1. Set Filters")
+        print("2. Manage Thresholds")
+        print("3. Start Packet Monitoring")
+        print("4. Scan Network for Devices")
+        print("5. Exit")
 
-        choice = input("\nSelect an option (1-4): ")
+        choice = input("\nSelect an option (1-5): ")
 
         if choice == "1":
-            start_monitoring(chosen_filter)
-        elif choice == "2":
             chosen_filter = get_filter_choice()
             print(f"Filter set: {chosen_filter}")
-        elif choice == "3":
+        elif choice == "2":
             manage_thresholds()
+        elif choice == "3":
+            start_monitoring(chosen_filter)
         elif choice == "4":
+            devices = scan_network()
+            if devices:
+                print("\n--- Devices Found ---")
+                for idx, device in enumerate(devices, 1):
+                    print(f"{idx}. IP: {device['ip']}, MAC: {device['mac']}, Hostname: {device['hostname']}")
+            else:
+                print("No devices found.")
+        elif choice == "5":
             print("Exiting...")
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()
