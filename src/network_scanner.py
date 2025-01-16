@@ -39,3 +39,4 @@ def scan_network(network_ip):
 if __name__ == "__main__":
     network = input("Enter the network range (e.g., 192.168.1.0/24): ").strip()
     scan_network(network)
+

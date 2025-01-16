@@ -7,6 +7,7 @@ from monitor_state import MonitorState
 from alerts import check_alert_conditions
 from database.database import initialize_database, save_packet, save_alert
 from network_scanner import scan_network
+from real_time_monitor  import monitor_network
 
 
 def alert_monitor(state):
@@ -82,7 +83,8 @@ def main():
         print("2. Manage Thresholds")
         print("3. Start Packet Monitoring")
         print("4. Scan Network for Devices")
-        print("5. Exit")
+        print("5. Real-Time Device Monitoring")
+        print("6. Exit")
 
         choice = input("\nSelect an option (1-5): ")
 
@@ -94,13 +96,18 @@ def main():
         elif choice == "3":
             start_monitoring(chosen_filter)
         elif choice == "4":
-            # Prompt the user for the network IP range
             network_ip = input("Enter the network IP range (e.g., 192.168.1.0/24): ").strip()
             if network_ip:
-                scan_network(network_ip)  # Pass the network_ip to the function
+                scan_network(network_ip)
             else:
                 print("Invalid input. Please enter a valid network IP range.")
         elif choice == "5":
+            network_ip = input("Enter the network IP range (e.g., 192.168.1.0/24): ").strip()
+            if network_ip:
+                monitor_network(network_ip)
+            else:
+                print("Invalid input. Please enter a valid network IP range.")
+        elif choice == "6":
             print("Exiting...")
             break
         else:
