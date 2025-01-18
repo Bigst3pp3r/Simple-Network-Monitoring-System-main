@@ -3,6 +3,8 @@ from prettytable import PrettyTable
 import socket
 import requests
 import time
+import nmap
+import re
 
 # OUI API URL for MAC Address lookup
 OUI_LOOKUP_API = "https://api.maclookup.app/v2/macs/"
@@ -39,13 +41,38 @@ def get_ttl(ip):
     except:
         return None
 
+def get_http_banner(ip):
+    """
+    Attempts to grab an HTTP banner for additional fingerprinting.
+    """
+    try:
+        response = requests.get(f"http://{ip}", timeout=2)
+        server_header = response.headers.get("Server", "Unknown")
+        return server_header
+    except:
+        return "No HTTP Response"
+
+def scan_ports(ip):
+    """
+    Scans common ports to help determine device type.
+    """
+    scanner = nmap.PortScanner()
+    try:
+        scanner.scan(ip, arguments="-p 22,80,443,554,3389 --open")
+        open_ports = [port for port in scanner[ip]['tcp'].keys() if scanner[ip]['tcp'][port]['state'] == 'open']
+        return open_ports
+    except:
+        return []
+
 def get_device_type(ip, mac):
     """
-    Determines the type of device based on MAC manufacturer and TTL.
+    Determines the type of device based on MAC manufacturer, TTL, open ports, and HTTP banners.
     """
     manufacturer = get_manufacturer(mac)
-
-    # Device type based on MAC Address OUI
+    ttl = get_ttl(ip)
+    http_banner = get_http_banner(ip)
+    open_ports = scan_ports(ip)
+    
     if "Apple" in manufacturer:
         return "MacBook / iPhone"
     elif "Samsung" in manufacturer:
@@ -57,8 +84,6 @@ def get_device_type(ip, mac):
     elif "Hikvision" in manufacturer or "Dahua" in manufacturer:
         return "IP Camera"
     
-    # Device type based on TTL analysis
-    ttl = get_ttl(ip)
     if ttl:
         if ttl <= 64:
             return "Linux Device"
@@ -66,7 +91,16 @@ def get_device_type(ip, mac):
             return "Windows Device"
         elif ttl >= 200:
             return "Router / IoT Device"
-
+    
+    if "Apache" in http_banner or "nginx" in http_banner:
+        return "Web Server"
+    if 22 in open_ports:
+        return "SSH Server"
+    if 554 in open_ports:
+        return "Surveillance Camera"
+    if 3389 in open_ports:
+        return "Windows RDP Server"
+    
     return "Unknown Device"
 
 def scan_network(network_ip):
@@ -122,24 +156,17 @@ def monitor_network(network_ip, interval=10):
             current_devices = scan_network(network_ip)
             current_ips = {device["ip"] for device in current_devices}
 
-            # Check for new devices
             for device in current_devices:
                 if device not in known_devices:
                     print(f"\n🔹 New Device Connected: IP={device['ip']}, MAC={device['mac']}, Name={device['device_name']}, Type={device['device_type']}")
 
-            # Check for disconnected devices
             for device in known_devices:
                 if device["ip"] not in current_ips:
                     print(f"\n❌ Device Disconnected: IP={device['ip']}, MAC={device['mac']}, Name={device['device_name']}, Type={device['device_type']}")
 
-            # Update known devices
             known_devices = current_devices
-
-            # Display the current devices in a table
             print("\n--- Current Devices ---")
             display_devices(current_devices)
-
-            # Wait for the next scan
             time.sleep(interval)
 
     except KeyboardInterrupt:
@@ -147,7 +174,6 @@ def monitor_network(network_ip, interval=10):
     except Exception as e:
         print(f"Error during monitoring: {e}")
 
-# Example Usage
 if __name__ == "__main__":
-    network_range = "192.168.0.1/24"  # Change this to match your network
+    network_range = "192.168.0.1/24"
     monitor_network(network_range)
