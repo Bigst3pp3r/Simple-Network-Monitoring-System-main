@@ -32,7 +32,6 @@ def start_monitoring(chosen_filter):
     """
     # Initialize the database
     initialize_database()
-
     # Setup logging
     setup_logging()
 
