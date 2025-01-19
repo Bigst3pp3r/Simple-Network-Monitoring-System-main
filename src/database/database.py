@@ -11,6 +11,8 @@ def initialize_database():
         conn = sqlite3.connect("network_monitor.db")
         cursor = conn.cursor()
 
+
+
         # Create the packets table (if not already created)
         cursor.execute(
             """
