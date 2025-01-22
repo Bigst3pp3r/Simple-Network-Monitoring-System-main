@@ -3,14 +3,33 @@ import sqlite3
 # Initialize the database connection
 
 
+import sqlite3
+
 def initialize_database():
     """
     Initializes the database with necessary tables.
     """
     try:
-        conn = sqlite3.connect("network_monitor.db")
+        conn = sqlite3.connect("network_monitoring.db")
         cursor = conn.cursor()
-
+        
+        
+        #Create the network_devices table to store monitored devices
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS network_devices (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ip_address TEXT NOT NULL,
+                mac_address TEXT NOT NULL UNIQUE,
+                manufacturer TEXT,
+                device_name TEXT,
+                device_type TEXT,
+                first_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                last_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                status TEXT
+            )
+            """
+        )
 
 
         # Create the packets table (if not already created)
@@ -45,9 +64,8 @@ def initialize_database():
         print(f"Error initializing database: {e}")
     finally:
         conn.close()
+
 # Save a captured packet to the database
-
-
 def save_packet(timestamp, source_ip, destination_ip, protocol):
     """
     Save a captured packet to the database.
@@ -83,7 +101,7 @@ def save_alert(timestamp, message, alert_type, severity="Medium"):
         severity (str): The severity of the alert (default: Medium).
     """
     try:
-        conn = sqlite3.connect("network_monitor.db")
+        conn = sqlite3.connect("network_monitoring.db")
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -98,3 +116,54 @@ def save_alert(timestamp, message, alert_type, severity="Medium"):
         print(f"Error saving alert to database: {e}")
     finally:
         conn.close()
+        
+def log_device(ip, mac, manufacturer, device_name, device_type, status="connected"):
+    """
+    Logs or updates a network device in the database.
+
+    Parameters:
+    ip (str): IP address of the device.
+    mac (str): MAC address of the device.
+    manufacturer (str): Manufacturer of the device.
+    device_name (str): Device hostname.
+    device_type (str): Type of device.
+    status (str): Connection status (default: "connected").
+    """
+    try:
+        conn = sqlite3.connect("network_monitoring.db")
+        cursor = conn.cursor()
+
+        # Check if the device already exists
+        cursor.execute(
+            "SELECT id FROM network_devices WHERE mac_address = ?",
+            (mac,),
+        )
+        device = cursor.fetchone()
+
+        if device:
+            # Update the last seen timestamp and status if the device already exists
+            cursor.execute(
+                """
+                UPDATE network_devices 
+                SET last_seen = CURRENT_TIMESTAMP, status = ? 
+                WHERE mac_address = ?
+                """,
+                (status, mac),
+            )
+        else:
+            # Insert a new record for a new device
+            cursor.execute(
+                """
+                INSERT INTO network_devices (ip_address, mac_address, manufacturer, device_name, device_type, status)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (ip, mac, manufacturer, device_name, device_type, status),
+            )
+
+        conn.commit()
+    except sqlite3.Error as e:
+        print(f"Error logging device: {e}")
+    finally:
+        conn.close()
+
+        

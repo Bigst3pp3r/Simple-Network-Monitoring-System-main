@@ -3,6 +3,7 @@ from prettytable import PrettyTable
 import socket
 import requests
 import time
+from database.database import log_device
 
 # OUI API URL for MAC Address lookup
 OUI_LOOKUP_API = "https://api.maclookup.app/v2/macs/"
@@ -96,7 +97,9 @@ def display_devices(devices):
     print(table)
 
 def monitor_network(network_ip, interval=10):
-    """Continuously monitors the network for changes."""
+    """
+    Continuously monitors the network for active devices.
+    """
     known_devices = []
     print("\n--- Real-Time Device Monitoring ---")
     print("Press Ctrl+C to stop monitoring.\n")
@@ -109,10 +112,12 @@ def monitor_network(network_ip, interval=10):
             for device in current_devices:
                 if device not in known_devices:
                     print(f"\n🔹 New Device Connected: IP={device['ip']}, MAC={device['mac']}, Name={device['device_name']}, Type={device['device_type']}")
+                    log_device(device["ip"], device["mac"], device["manufacturer"], device["device_name"], device["device_type"], status="connected")
 
             for device in known_devices:
                 if device["ip"] not in current_ips:
                     print(f"\n❌ Device Disconnected: IP={device['ip']}, MAC={device['mac']}, Name={device['device_name']}, Type={device['device_type']}")
+                    log_device(device["ip"], device["mac"], device["manufacturer"], device["device_name"], device["device_type"], status="disconnected")
 
             known_devices = current_devices
             print("\n--- Current Devices ---")
