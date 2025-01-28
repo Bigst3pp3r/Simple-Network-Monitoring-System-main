@@ -15,6 +15,24 @@ class MonitorState:
     """
        
     def __init__(self):
+        """
+        Initialize a new instance of the MonitorState class.
+
+        This constructor sets up the initial state for network monitoring,
+        including packet counts, protocol and IP statistics, traffic volume,
+        and alert thresholds. It also initializes a lock for thread-safe
+        operations and sets the monitoring activity to active.
+
+        Attributes:
+            packet_count (int): Initializes the total number of packets captured to zero.
+            protocol_counter (Counter): Initializes a Counter to track protocol statistics.
+            ip_counter (Counter): Initializes a Counter to track IP address statistics.
+            traffic_volume (int): Initializes the total traffic volume in bytes to zero.
+            last_volume_timestamp (float): Records the current time for traffic volume calculations.
+            lock (threading.Lock): A lock to ensure thread-safe access to shared state.
+            is_active (bool): A flag indicating whether monitoring is currently active, set to True.
+            alert_thresholds (dict): Custom alert thresholds for packet rate, protocol limits, and IP limits.
+        """
         self.packet_count = 0  # Total packets captured
         self.protocol_counter = Counter()  # Protocol statistics
         self.ip_counter = Counter()  # IP address statistics
@@ -22,13 +40,14 @@ class MonitorState:
         self.last_volume_timestamp = time.time()  # Last volume calculation timestamp
         self.lock = threading.Lock()  # Thread-safety lock
         self.is_active = True  # Flag to control monitoring activity
-        
+
     # Custom alert thresholds
         self.alert_thresholds = {
             "packet_rate": 100,  # Packets per second
             "protocol_limits": {},  # e.g., {"TCP": 500, "UDP": 1000}
             "ip_limits": {},  # e.g., {"192.168.0.1": 200}
         }
+
 
     def toggle_activity(self):
         """

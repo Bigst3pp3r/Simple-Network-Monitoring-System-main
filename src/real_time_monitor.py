@@ -41,19 +41,19 @@ def get_device_type(ip, mac):
     # Guess device based on MAC manufacturer
     if "Apple" in manufacturer:
         return "MacBook / iPhone"
-    elif "Samsung" in manufacturer:
-        return "Samsung Device"
-    elif "Dell" in manufacturer or "Lenovo" in manufacturer or "HP" in manufacturer:
+    elif "Dell" in manufacturer or "Lenovo" in manufacturer or "HP" in manufacturer or "Acer" in manufacturer or "Microsoft" in manufacturer or "Intel" in manufacturer or "ASUSTek" in manufacturer or "Toshiba" in manufacturer:
         return "Laptop / PC"
     elif "TP-Link" in manufacturer or "Cisco" in manufacturer or "Netgear" in manufacturer:
         return "Router / Network Device"
-    elif "Hikvision" in manufacturer or "Dahua" in manufacturer:
+    elif "Hikvision" in manufacturer or "Dahua" in manufacturer or "Axis Communications" in manufacturer or "Hanwha Techwin" in manufacturer or "Panasonic" in manufacturer:
         return "IP Camera"
+    elif "GUANGDONG OPPO MOBILE TELECOMMUNICATIONS CORP.,LTD" in manufacturer or "Xiaomi" in manufacturer or "OnePlus" in manufacturer or "Vivo" in manufacturer or "Realme" in manufacturer or "Motorola" in manufacturer or "Nokia" in manufacturer or "Sony" in manufacturer or "Google" in manufacturer or "Asus" in manufacturer or "LG" in manufacturer or "HTC" in manufacturer or "ZTE" in manufacturer or "Huawei" in manufacturer or "Samsung" in manufacturer  or "Infinix" in manufacturer or "Tecno" in manufacturer or "Itel" in manufacturer:
+        return "Android Device"
 
     # Guess OS based on TTL
     if ttl:
         if ttl <= 64:
-            return "Linux Device"
+            return "Linux Device / android"
         elif ttl <= 128:
             return "Windows Device"
         elif ttl >= 200:

@@ -13,25 +13,6 @@ def initialize_database():
         conn = sqlite3.connect("network_monitoring.db")
         cursor = conn.cursor()
         
-        
-        #Create the network_devices table to store monitored devices
-        cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS network_devices (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                ip_address TEXT NOT NULL,
-                mac_address TEXT NOT NULL UNIQUE,
-                manufacturer TEXT,
-                device_name TEXT,
-                device_type TEXT,
-                first_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                last_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                status TEXT
-            )
-            """
-        )
-
-
         # Create the packets table (if not already created)
         cursor.execute(
             """
@@ -54,6 +35,23 @@ def initialize_database():
                 message TEXT NOT NULL,
                 type TEXT NOT NULL,
                 severity TEXT
+            )
+            """
+        )
+        
+         #Create the network_devices table to store monitored devices
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS network_devices (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ip_address TEXT NOT NULL,
+                mac_address TEXT NOT NULL UNIQUE,
+                manufacturer TEXT,
+                device_name TEXT,
+                device_type TEXT,
+                first_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                last_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                status TEXT
             )
             """
         )

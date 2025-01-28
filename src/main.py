@@ -27,8 +27,24 @@ def start_monitoring(chosen_filter):
     """
     Starts the network monitoring process with user-defined filters and thresholds.
 
+    This function initializes the database, sets up logging, creates a shared state,
+    and starts threads for traffic summary and alert monitoring. It then begins
+    packet capture using Scapy with the specified filter.
     Args:
-        chosen_filter (str or None): The filter string for Scapy or None for no filter.
+        chosen_filter (str or None): The filter string for Scapy to apply during
+            packet capture. If None, no filter is applied.
+
+    Returns:
+        None
+
+    Raises:
+        KeyboardInterrupt: If the user manually stops the monitoring process.
+        Exception: For any other errors that occur during the monitoring process.
+
+    Note:
+        The function will run indefinitely until interrupted by the user (Ctrl+C)
+        or an exception occurs. Upon termination, it ensures all monitoring threads
+        are stopped by setting the shared state's 'is_active' flag to False.
     """
     # Initialize the database
     initialize_database()
@@ -70,9 +86,33 @@ def start_monitoring(chosen_filter):
     finally:
         state.is_active = False  # Stop all monitoring threads
 
+
 def main():
     """
-    CLI for managing and starting the network monitoring system.
+    Command-line interface for managing and starting the network monitoring system.
+
+    This function provides a menu-driven interface for users to interact with
+    various features of the network monitoring system. It allows users to:
+    1. Set packet capture filters
+    2. Manage alert thresholds
+    3. Start packet monitoring
+    4. Scan the network for devices
+    5. Monitor devices in real-time
+    6. Exit the program
+
+    The function runs in a loop, continuously presenting options to the user
+    until they choose to exit.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+
+    Note:
+    - The function uses global state to manage the chosen filter.
+    - It calls other functions to handle specific tasks based on user input.
+    - Invalid inputs are handled with appropriate error messages.
     """
     chosen_filter = None  # Initialize filter to None
 
@@ -111,6 +151,7 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 
 if __name__ == "__main__":
