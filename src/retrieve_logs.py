@@ -1,37 +1,54 @@
 import sqlite3
 from prettytable import PrettyTable
 
-def get_logged_devices():
-    """
-    Retrieve all logged network devices.
-    """
+DB_FILE = "network_monitoring.db"
+
+def check_table_exists(table_name):
+    """Check if a table exists in the database."""
     try:
-        conn = sqlite3.connect("network_monitoring.db")
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM network_devices")
-        devices = cursor.fetchall()
-        conn.close()
+        with sqlite3.connect(DB_FILE) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,)
+            )
+            return cursor.fetchone() is not None
+    except sqlite3.Error as e:
+        print(f"Error checking table {table_name}: {e}")
+        return False
+
+def get_logged_devices():
+    """Retrieve all logged network devices."""
+    if not check_table_exists("network_devices"):
+        print("⚠️ No logged devices found (Table does not exist).")
+        return
+
+    try:
+        with sqlite3.connect(DB_FILE) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM network_devices ORDER BY last_seen DESC")
+            devices = cursor.fetchall()
 
         table = PrettyTable()
-        table.field_names = ["id", "ip_address", "mac_address", "manufacturer", "device_name", "device_type", "first_seen TIMESTAMP", "last_seen TIMESTAMP", "status"]
+        table.field_names = ["ID", "IP Address", "MAC Address", "Manufacturer", "Device Name", "Device Type", "First Seen", "Last Seen", "Status"]
 
         for device in devices:
             table.add_row(device)
 
-        print(table if devices else "No devices logged yet.")
+        print(table if devices else "📭 No devices logged yet.")
     except sqlite3.Error as e:
-        print(f"Error retrieving devices: {e}")
+        print(f"❌ Error retrieving devices: {e}")
 
 def get_captured_packets():
-    """
-    Retrieve all captured network packets.
-    """
+    """Retrieve all captured network packets."""
+    if not check_table_exists("packets"):
+        print("⚠️ No captured packets found (Table does not exist).")
+        return
+
     try:
-        conn = sqlite3.connect("network_monitoring.db")
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM packets")
-        packets = cursor.fetchall()
-        conn.close()
+        with sqlite3.connect(DB_FILE) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM packets ORDER BY timestamp DESC")
+            packets = cursor.fetchall()
 
         table = PrettyTable()
         table.field_names = ["ID", "Timestamp", "Source IP", "Destination IP", "Protocol"]
@@ -39,20 +56,21 @@ def get_captured_packets():
         for packet in packets:
             table.add_row(packet)
 
-        print(table if packets else "No packets captured yet.")
+        print(table if packets else "📭 No packets captured yet.")
     except sqlite3.Error as e:
-        print(f"Error retrieving packets: {e}")
+        print(f"❌ Error retrieving packets: {e}")
 
 def get_alerts():
-    """
-    Retrieve all alerts.
-    """
+    """Retrieve all alerts."""
+    if not check_table_exists("alerts"):
+        print("⚠️ No alerts found (Table does not exist).")
+        return
+
     try:
-        conn = sqlite3.connect("network_monitoring.db")
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM alerts")
-        alerts = cursor.fetchall()
-        conn.close()
+        with sqlite3.connect(DB_FILE) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM alerts ORDER BY timestamp DESC")
+            alerts = cursor.fetchall()
 
         table = PrettyTable()
         table.field_names = ["ID", "Timestamp", "Message", "Type", "Severity"]
@@ -60,17 +78,17 @@ def get_alerts():
         for alert in alerts:
             table.add_row(alert)
 
-        print(table if alerts else "No alerts recorded yet.")
+        print(table if alerts else "📭 No alerts recorded yet.")
     except sqlite3.Error as e:
-        print(f"Error retrieving alerts: {e}")
+        print(f"❌ Error retrieving alerts: {e}")
 
 if __name__ == "__main__":
     while True:
-        print("\nNetwork Monitoring Logs Retrieval")
-        print("1. View Logged Devices")
-        print("2. View Captured Packets")
-        print("3. View Alerts")
-        print("4. Exit")
+        print("\n📡 Network Monitoring Logs Retrieval")
+        print("1️⃣ View Logged Devices")
+        print("2️⃣ View Captured Packets")
+        print("3️⃣ View Alerts")
+        print("4️⃣ Exit")
 
         choice = input("Enter your choice: ")
 
@@ -81,7 +99,7 @@ if __name__ == "__main__":
         elif choice == "3":
             get_alerts()
         elif choice == "4":
-            print("Exiting...")
+            print("🚪 Exiting...")
             break
         else:
-            print("Invalid choice, try again.")
+            print("❌ Invalid choice, try again.")
