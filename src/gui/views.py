@@ -86,8 +86,8 @@ def create_table_view(parent, columns, table_name):
         tree.column(col, anchor="center", width=100)
 
     # Apply alternating row colors
-    tree.tag_configure("evenrow", background="#f5f5f5")  # Light gray
-    tree.tag_configure("oddrow", background="#ffffff")   # White
+    tree.tag_configure("evenrow", background="#636363")  # Light gray
+    tree.tag_configure("oddrow", background="#3b3b3b")   # dark grey
 
     # Fetch data from database
     conn = sqlite3.connect("network_monitoring.db")

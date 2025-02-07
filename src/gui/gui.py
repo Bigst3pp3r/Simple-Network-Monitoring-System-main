@@ -10,6 +10,7 @@ from ttkbootstrap import Style
 from ttkbootstrap.constants import *
 from dashboard import create_dashboard
 import sqlite3
+from settings import create_settings_tab
 
 REFRESH_INTERVAL = 5000  # 5 seconds
 
@@ -26,10 +27,10 @@ def check_new_alerts():
         messagebox.showwarning("⚠️ Network Alert", f"Time: {timestamp}\nAlert: {message}")
 
     # Check for new alerts every 10 seconds
-    root.after(100000000, check_new_alerts)
+    root.after(1000000000000, check_new_alerts)
 
 root = tk.Tk()
-root.after(5000, check_new_alerts)  # Start checking after 5 seconds
+root.after(5000000, check_new_alerts)  # Start checking after 5 seconds
 
 
 
@@ -76,6 +77,11 @@ def create_gui():
     notebook.add(frame_devices, text="🖥️ Logged Devices")
     notebook.add(frame_packets, text="📡 Captured Packets")
     notebook.add(frame_alerts, text="⚠️ Alerts")
+    
+    
+    # Inside create_gui()
+    frame_settings = create_settings_tab(notebook)
+    notebook.add(frame_settings, text="⚙️ Settings")
 
     # Custom Exit Button
     btn_exit = ttk.Button(root, text="🚪 Exit", command=root.quit, style="danger.TButton")
