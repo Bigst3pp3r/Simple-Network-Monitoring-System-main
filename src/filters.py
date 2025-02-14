@@ -1,98 +1,95 @@
-# Define global threshold values
-HIGH_PACKET_RATE_THRESHOLD = 100  # Default high packet rate threshold
-ICMP_ACTIVITY_THRESHOLD = 10  # Default suspicious ICMP activity threshold
-BLACKLISTED_IPS = []  # Default list of blacklisted IP addresses
+import sqlite3
 
-# Function to get user-defined filter choice
-def get_filter_choice():
-    """
-    Displays filter options to the user and returns the chosen filter.
-    """
-    while True:
-        print("\n--- Filter Options ---")
-        print("1. No filter (capture all traffic)")
-        print("2. Filter by protocol (TCP, UDP, ICMP)")
-        print("3. Filter by source or destination IP")
-        print("4. Filter by port number")
-        print("5. Return to main menu")
+DB_FILE = "network_monitoring.db"
 
-        choice = input("\nEnter your choice (1-5): ").strip()
+# Ensure the filters table exists
+def init_db():
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS filters (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                protocol TEXT,
+                port INTEGER
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS thresholds (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                high_packet_threshold INTEGER,
+                icmp_activity_threshold INTEGER
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS blacklisted_ips (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ip_address TEXT UNIQUE
+            )
+        ''')
+        conn.commit()
 
-        if choice == "1":
-            return None
-        elif choice == "2":
-            protocol = input("Enter protocol to filter (TCP/UDP/ICMP): ").strip().upper()
-            if protocol in ["TCP", "UDP", "ICMP"]:
-                return f"{protocol.lower()}"
-            else:
-                print("Invalid protocol. Returning to main menu.")
-                return None
-        elif choice == "3":
-            ip = input("Enter the IP address to filter: ").strip()
-            return f"host {ip}"
-        elif choice == "4":
-            port = input("Enter the port number to filter: ").strip()
-            return f"port {port}"
-        elif choice == "5":
-            return None
-        else:
-            print("Invalid choice. Please try again.")
+# --- FILTERS: Protocol & Port ---
+def add_filter(protocol, port):
+    """ Add a new protocol/port filter to the database """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO filters (protocol, port) VALUES (?, ?)", (protocol, port))
+        conn.commit()
 
+def remove_filter(protocol, port):
+    """ Remove a protocol/port filter from the database """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM filters WHERE protocol = ? AND port = ?", (protocol, port))
+        conn.commit()
 
-# Function to manage alert thresholds
-def manage_thresholds():
-    """
-    Allows the user to define custom alert thresholds.
+def get_filters():
+    """ Retrieve all active protocol/port filters """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT protocol, port FROM filters")
+        return cursor.fetchall()  # Returns a list of (protocol, port) tuples
 
-    Users can set thresholds for high packet rates, suspicious protocol counts, or specific IP addresses.
-    """
-    print("\n--- Threshold Management ---")
-    print("1. Set high packet rate threshold")
-    print("2. Set suspicious ICMP activity threshold")
-    print("3. Add a blacklisted IP address")
-    print("4. Remove a blacklisted IP address")
-    print("5. View current thresholds")
-    print("6. Return to main menu")
+# --- THRESHOLDS ---
+def get_thresholds():
+    """ Get current thresholds for high packet rate & ICMP activity """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT high_packet_threshold, icmp_activity_threshold FROM thresholds ORDER BY id DESC LIMIT 1")
+        result = cursor.fetchone()
+        if result:
+            return {"high_packet_threshold": result[0], "icmp_activity_threshold": result[1]}
+        return {"high_packet_threshold": 1000, "icmp_activity_threshold": 50}  # Default values
 
-    global HIGH_PACKET_RATE_THRESHOLD, ICMP_ACTIVITY_THRESHOLD, BLACKLISTED_IPS  # Use global variables
+def update_thresholds(high_packet_threshold, icmp_activity_threshold):
+    """ Update threshold values in the database """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO thresholds (high_packet_threshold, icmp_activity_threshold) VALUES (?, ?)", 
+                       (high_packet_threshold, icmp_activity_threshold))
+        conn.commit()
 
-    while True:
-        choice = input("\nEnter your choice (1-6): ").strip()
-        if choice == "1":
-            try:
-                threshold = int(input("Enter the new high packet rate threshold: ").strip())
-                HIGH_PACKET_RATE_THRESHOLD = threshold
-                print(f"High packet rate threshold updated to {threshold}.")
-            except ValueError:
-                print("Invalid input. Please enter a valid number.")
-        elif choice == "2":
-            try:
-                threshold = int(input("Enter the new ICMP activity threshold: ").strip())
-                ICMP_ACTIVITY_THRESHOLD = threshold
-                print(f"Suspicious ICMP activity threshold updated to {threshold}.")
-            except ValueError:
-                print("Invalid input. Please enter a valid number.")
-        elif choice == "3":
-            ip = input("Enter the IP address to blacklist: ").strip()
-            if ip not in BLACKLISTED_IPS:
-                BLACKLISTED_IPS.append(ip)
-                print(f"IP address {ip} added to the blacklist.")
-            else:
-                print(f"IP address {ip} is already blacklisted.")
-        elif choice == "4":
-            ip = input("Enter the IP address to remove from the blacklist: ").strip()
-            if ip in BLACKLISTED_IPS:
-                BLACKLISTED_IPS.remove(ip)
-                print(f"IP address {ip} removed from the blacklist.")
-            else:
-                print(f"IP address {ip} is not in the blacklist.")
-        elif choice == "5":
-            print("\n--- Current Thresholds ---")
-            print(f"High Packet Rate Threshold: {HIGH_PACKET_RATE_THRESHOLD}")
-            print(f"Suspicious ICMP Activity Threshold: {ICMP_ACTIVITY_THRESHOLD}")
-            print(f"Blacklisted IPs: {', '.join(BLACKLISTED_IPS) if BLACKLISTED_IPS else 'None'}")
-        elif choice == "6":
-            print("Returning to main menu...")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+# --- BLACKLISTED IPs ---
+def get_blacklisted_ips():
+    """ Retrieve all blacklisted IPs """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT ip_address FROM blacklisted_ips")
+        return [row[0] for row in cursor.fetchall()]
+
+def add_blacklisted_ip(ip):
+    """ Add a new IP to the blacklist """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("INSERT OR IGNORE INTO blacklisted_ips (ip_address) VALUES (?)", (ip,))
+        conn.commit()
+
+def remove_blacklisted_ip(ip):
+    """ Remove an IP from the blacklist """
+    with sqlite3.connect(DB_FILE) as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM blacklisted_ips WHERE ip_address = ?", (ip,))
+        conn.commit()
+
+# Ensure database structure exists on import
+init_db()
