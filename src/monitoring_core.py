@@ -1,3 +1,4 @@
+
 import threading
 from scapy.all import sniff
 from filters import get_filters
@@ -8,21 +9,25 @@ from alerts import check_alert_conditions
 from database.database import initialize_database
 from network_scanner import scan_network
 from real_time_monitor import monitor_network
-
+from traffic_summary import display_summary  # ✅ Import function
 
 class NetworkMonitor:
     def __init__(self):
         """Initialize network monitoring system with shared state."""
         self.state = MonitorState()
         self.chosen_filter = None
+        self.packet_count = 0
+        self.protocol_counts = {}
+        self.alert_count = 0  # ✅ Track alert count
+
+        # ✅ Start traffic summary in a background thread
+        summary_thread = threading.Thread(target=display_summary, args=(self.state,), daemon=True)
+        summary_thread.start()
 
     def start_monitoring(self):
         """Starts the network monitoring process."""
         initialize_database()
         setup_logging()
-        from traffic_summary import display_summary
-        summary_thread = threading.Thread(target=display_summary, args=(self.state,), daemon=True)
-        summary_thread.start()
 
         alert_thread = threading.Thread(target=self.alert_monitor, args=(self.state,), daemon=True)
         alert_thread.start()
@@ -44,6 +49,15 @@ class NetworkMonitor:
     def get_protocol_counts(self):
         """Returns a dictionary of protocol counts."""
         return dict(self.state.protocol_counter)
+    
+    def get_alert_count(self):
+        """Returns the total alert count."""
+        return self.alert_count
+
+    def get_traffic_summary(self):
+        """Fetches the latest real-time traffic summary from state."""
+        return self.state.traffic_summary  # ✅ Fetch latest summary
+
     def alert_monitor(self, state):
         """Continuously check for alert conditions and send alerts to GUI."""
         while state.is_active:
