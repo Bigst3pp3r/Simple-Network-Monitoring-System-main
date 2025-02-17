@@ -6,7 +6,7 @@ def main():
     while True:
         print("\n--- Network Monitoring System ---")
         print("1. Set Filters")
-        print("2. Manage Thresholds")
+       
         print("3. Start Packet Monitoring")
         print("4. Scan Network for Devices")
         print("5. Real-Time Device Monitoring")
@@ -16,8 +16,7 @@ def main():
 
         if choice == "1":
             monitor.set_filter()
-        elif choice == "2":
-            monitor.configure_thresholds()
+       
         elif choice == "3":
             monitor.start_monitoring()
         elif choice == "4":
@@ -34,3 +33,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

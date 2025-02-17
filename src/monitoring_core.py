@@ -1,14 +1,14 @@
 import threading
-from scapy.all import sniff, IP, TCP, UDP, ICMP
-from filters import get_filters  # Import filter settings
+from scapy.all import sniff
+from filters import get_filters
 from logging_setup import setup_logging
 from packet_processing import process_packet
-from traffic_summary import display_summary
 from monitor_state import MonitorState
 from alerts import check_alert_conditions
 from database.database import initialize_database
 from network_scanner import scan_network
 from real_time_monitor import monitor_network
+
 
 class NetworkMonitor:
     def __init__(self):
@@ -20,7 +20,7 @@ class NetworkMonitor:
         """Starts the network monitoring process."""
         initialize_database()
         setup_logging()
-
+        from traffic_summary import display_summary
         summary_thread = threading.Thread(target=display_summary, args=(self.state,), daemon=True)
         summary_thread.start()
 
@@ -28,7 +28,6 @@ class NetworkMonitor:
         alert_thread.start()
 
         try:
-            from scapy.all import sniff
             print("Starting packet capture... Press Ctrl+C to stop.")
             sniff(prn=lambda packet: process_packet(packet, self.state), store=False, filter=self.chosen_filter)
         except KeyboardInterrupt:
@@ -38,15 +37,22 @@ class NetworkMonitor:
         finally:
             self.state.is_active = False  # Stop monitoring
 
+    def get_packet_count(self):
+        """Returns the total number of packets captured."""
+        return self.state.packet_count
+
+    def get_protocol_counts(self):
+        """Returns a dictionary of protocol counts."""
+        return dict(self.state.protocol_counter)
     def alert_monitor(self, state):
-        """Continuously check for alert conditions."""
+        """Continuously check for alert conditions and send alerts to GUI."""
         while state.is_active:
             check_alert_conditions(state.packet_count, state.protocol_counter, state.ip_counter, state)
             threading.Event().wait(5)
 
     def set_filter(self):
         """Set user-defined filter."""
-        self.chosen_filter = get_filter_choice()
+        self.chosen_filter = get_filters()
         print(f"Filter set: {self.chosen_filter}")
 
     def scan_network_devices(self, network_ip):
@@ -56,7 +62,3 @@ class NetworkMonitor:
     def monitor_network_devices(self, network_ip):
         """Monitor network devices in real time."""
         monitor_network(network_ip)
-
-    def configure_thresholds(self):
-        """Manage alert thresholds."""
-        manage_thresholds()

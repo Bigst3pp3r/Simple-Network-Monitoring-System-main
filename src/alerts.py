@@ -1,9 +1,11 @@
-# Handles alert conditions and notifications
 import logging
 from datetime import datetime
-from database.database import save_alert  # Import save_alert from the database module
+from database.database import save_alert  
+from alerts_gui import display_alert  # Use the new location
 
-# Configure logging for alerts
+
+
+# Configure logging
 alerts_log_file = "alerts_log.txt"
 logging.basicConfig(
     filename=alerts_log_file,
@@ -12,81 +14,52 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
-# Example threshold values (can be made configurable)
-HIGH_PACKET_RATE_THRESHOLD = 100  # Packets per second
-ICMP_ACTIVITY_THRESHOLD = 10      # ICMP packets before alert
+# Threshold values (Configurable from GUI)
+HIGH_PACKET_RATE_THRESHOLD = 100  
+ICMP_ACTIVITY_THRESHOLD = 10      
 BLACKLISTED_IPS = ["192.168.1.100", "10.0.0.5"]
 
-def check_alert_conditions(packet_count, protocol_counter, ip_counter, monitor_state):
-    """
-    Evaluate conditions to trigger alerts based on the current monitor state.
 
-    Args:
-        packet_count: Total number of packets captured.
-        protocol_counter: Counter for different protocols in the traffic.
-        ip_counter: Counter for IP addresses involved in the traffic.
-        monitor_state: Shared monitoring state object.
-    """
-    if not monitor_state.is_active:  # Skip if monitoring is inactive
+
+def check_alert_conditions(packet_count, protocol_counter, ip_counter, monitor_state):
+    """ Evaluate conditions and trigger alerts in GUI. """
+    if not monitor_state.is_active:
         return
 
-    # Define the list of alert checks
     alert_checks = [
         lambda: check_high_packet_rate(packet_count),
         lambda: check_icmp_activity(protocol_counter),
         lambda: check_blacklisted_ips(ip_counter),
     ]
 
-    # Execute each alert check
     for check in alert_checks:
         check()
 
 def check_high_packet_rate(packet_count):
-    """
-    Check for high packet rate and trigger an alert if exceeded.
-    
-    Args:
-        packet_count: Total number of packets captured.
-    """
+    """ Trigger alert if high packet rate is detected. """
     if packet_count > HIGH_PACKET_RATE_THRESHOLD:
-        log_alert(f"High traffic detected: {packet_count} packets captured!")
+        log_alert(f"High traffic detected: {packet_count} packets!", "Traffic", "High")
 
 def check_icmp_activity(protocol_counter):
-    """
-    Check for unusual ICMP activity and trigger an alert if exceeded.
-    
-    Args:
-        protocol_counter: Counter for different protocols in the traffic.
-    """
+    """ Trigger alert if unusual ICMP activity is detected. """
     if "ICMP" in protocol_counter and protocol_counter["ICMP"] > ICMP_ACTIVITY_THRESHOLD:
-        log_alert(f"Unusual ICMP activity detected: {protocol_counter['ICMP']} packets.")
+        log_alert(f"Unusual ICMP activity: {protocol_counter['ICMP']} packets.", "ICMP", "Medium")
 
 def check_blacklisted_ips(ip_counter):
-    """
-    Check for traffic involving blacklisted IPs and trigger alerts if found.
-    
-    Args:
-        ip_counter: Counter for IP addresses involved in the traffic.
-    """
+    """ Trigger alert if traffic from blacklisted IPs is detected. """
     for ip in BLACKLISTED_IPS:
         if ip in ip_counter:
-            log_alert(f"Traffic involving blacklisted IP {ip}: {ip_counter[ip]} packets.")
+            log_alert(f"Blacklisted IP detected: {ip} ({ip_counter[ip]} packets)", "Security", "Critical")
 
 def log_alert(message, alert_type="General", severity="Medium"):
-    """
-    Logs and saves alert messages to the database.
-
-    Args:
-        message (str): The alert message to log and save.
-        alert_type (str): The category/type of the alert.
-        severity (str): The severity of the alert.
-    """
-    # Record the current timestamp
+    """ Log and save alerts, then display them in the GUI. """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # Print and log the alert
-    print(f"ALERT: {message} [Type: {alert_type}, Severity: {severity}]")
+    # Log to file
     logging.info(f"{message} [Type: {alert_type}, Severity: {severity}]")
 
-    # Save the alert to the database
+    # Save to database
     save_alert(timestamp, message, alert_type, severity)
+
+    # Show in GUI
+    display_alert(timestamp, message, alert_type, severity)

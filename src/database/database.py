@@ -88,7 +88,7 @@ def save_packet(timestamp, source_ip, destination_ip, protocol):
         print(f"Error saving packet: {e}")
 
 
-def save_alert(timestamp, message, alert_type, severity="Medium"):
+def save_alert(timestamp, message, type, severity="Medium"):
     """
     Save an alert to the database.
 
@@ -106,7 +106,7 @@ def save_alert(timestamp, message, alert_type, severity="Medium"):
             INSERT INTO alerts (timestamp, message, type, severity)
             VALUES (?, ?, ?, ?)
             """,
-            (timestamp, message, alert_type, severity),
+            (timestamp, message, type, severity),
         )
         conn.commit()
         print(f"Alert saved: {message}")
@@ -115,6 +115,25 @@ def save_alert(timestamp, message, alert_type, severity="Medium"):
     finally:
         conn.close()
         
+def get_alerts():
+    """
+    Fetches the most recent alerts from the database.
+    
+    Returns:
+        list: A list of tuples containing alert data.
+    """
+    try:
+        conn = sqlite3.connect("network_monitoring.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT timestamp, message, type, severity FROM alerts ORDER BY timestamp DESC")
+        alerts = cursor.fetchall()
+        return alerts
+    except sqlite3.Error as e:
+        print(f"Error fetching alerts: {e}")
+        return []
+    finally:
+        conn.close()
+                
 def log_device(ip, mac, manufacturer, device_name, device_type, status="connected"):
     """
     Logs or updates a network device in the database.
@@ -164,4 +183,5 @@ def log_device(ip, mac, manufacturer, device_name, device_type, status="connecte
     finally:
         conn.close()
 
-        
+
+     
