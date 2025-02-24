@@ -1,20 +1,21 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, filedialog, messagebox
+import csv
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from database.database import get_alerts_by_timeframe  # Fetch alerts by day/week/month
 
-# Severity color mapping
+# ✅ Severity color mapping
 SEVERITY_COLORS = {
     "High": "red",
     "Medium": "orange",
     "Low": "green"
 }
 
-REFRESH_INTERVAL = 5000  # 5 seconds
+REFRESH_INTERVAL = 5000  # Auto-refresh every 5 seconds
 
 def create_alerts_tab(parent):
-    """Creates the alerts GUI tab with a table and alerts over time chart."""
+    """Creates the alerts GUI tab with a table, alerts over time chart, and export feature."""
     frame = ttk.Frame(parent, padding=10)
 
     # ✅ Title Label
@@ -73,6 +74,35 @@ def create_alerts_tab(parent):
 
         canvas.draw()
         frame.after(REFRESH_INTERVAL, update_alerts)  # Auto-refresh every 5s
+
+    # ✅ Export Alerts Function
+    def export_alerts():
+        """Export alerts to a CSV file."""
+        file_path = filedialog.asksaveasfilename(defaultextension=".csv",
+                                                 filetypes=[("CSV files", "*.csv")],
+                                                 title="Save Alerts As")
+        if not file_path:
+            return  # User canceled
+
+        alerts = get_alerts_by_timeframe(timeframe_var.get().lower())  # Fetch alerts
+
+        if not alerts:
+            messagebox.showinfo("No Data", "No alerts to export.")
+            return
+
+        try:
+            with open(file_path, mode="w", newline="") as file:
+                writer = csv.writer(file)
+                writer.writerow(["Timestamp", "Message", "Type", "Severity"])  # Header
+                writer.writerows(alerts)  # Alert data
+
+            messagebox.showinfo("Success", f"Alerts exported successfully to {file_path}")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to export alerts: {e}")
+
+    # ✅ Export Button
+    export_button = ttk.Button(frame, text="📁 Export Alerts", command=export_alerts)
+    export_button.pack(pady=5)
 
     timeframe_dropdown.bind("<<ComboboxSelected>>", lambda event: update_alerts())
     update_alerts()  # Initial Load

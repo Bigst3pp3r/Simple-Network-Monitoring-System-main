@@ -1374,3 +1374,84 @@
 2025-02-24 12:18:57 | ALERT: High traffic detected: 115 packets! [Type: Traffic, Severity: High]
 2025-02-24 12:51:08 | ALERT: High traffic detected: 146 packets! [Type: Traffic, Severity: High]
 2025-02-24 12:51:08 | ALERT: High traffic detected: 151 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:42 | ALERT: High traffic detected: 102 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:46 | ALERT: High traffic detected: 140 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:47 | ALERT: High traffic detected: 156 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:51 | ALERT: High traffic detected: 194 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:52 | ALERT: High traffic detected: 209 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:56 | ALERT: High traffic detected: 246 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:58 | ALERT: High traffic detected: 262 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:17:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:17:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:01 | ALERT: High traffic detected: 294 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:18:03 | ALERT: High traffic detected: 296 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:18:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:05 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:05 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:05 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:05 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:18:06 | ALERT: High traffic detected: 313 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:19:17 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:17 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:17 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:17 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:28 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:28 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:28 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:28 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:31 | ALERT: High traffic detected: 125 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:19:32 | ALERT: High traffic detected: 136 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:19:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-02-24 13:19:36 | ALERT: High traffic detected: 168 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:19:37 | ALERT: High traffic detected: 178 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:20:52 | ALERT: High traffic detected: 122 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:20:53 | ALERT: High traffic detected: 131 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:20:57 | ALERT: High traffic detected: 174 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:20:59 | ALERT: High traffic detected: 195 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:21:02 | ALERT: High traffic detected: 214 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:21:05 | ALERT: High traffic detected: 229 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:21:07 | ALERT: High traffic detected: 235 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:21:10 | ALERT: High traffic detected: 242 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:21:13 | ALERT: High traffic detected: 245 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:21:15 | ALERT: High traffic detected: 255 packets! [Type: Traffic, Severity: High]
+2025-02-24 13:21:18 | ALERT: High traffic detected: 278 packets! [Type: Traffic, Severity: High]
