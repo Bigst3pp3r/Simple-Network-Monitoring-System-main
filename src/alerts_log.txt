@@ -1372,3 +1372,5 @@
 2025-02-21 12:08:33 | ALERT: High traffic detected: 105 packets! [Type: Traffic, Severity: High]
 2025-02-21 12:08:37 | ALERT: High traffic detected: 139 packets! [Type: Traffic, Severity: High]
 2025-02-24 12:18:57 | ALERT: High traffic detected: 115 packets! [Type: Traffic, Severity: High]
+2025-02-24 12:51:08 | ALERT: High traffic detected: 146 packets! [Type: Traffic, Severity: High]
+2025-02-24 12:51:08 | ALERT: High traffic detected: 151 packets! [Type: Traffic, Severity: High]

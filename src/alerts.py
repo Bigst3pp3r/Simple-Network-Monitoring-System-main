@@ -1,8 +1,6 @@
 import logging
 from datetime import datetime
 from database.database import save_alert  
-from alerts_gui import display_alert  # Use the new location
-
 
 
 # Configure logging
@@ -61,5 +59,4 @@ def log_alert(message, alert_type="General", severity="Medium"):
     # Save to database
     save_alert(timestamp, message, alert_type, severity)
 
-    # Show in GUI
-    display_alert(timestamp, message, alert_type, severity)
+ 

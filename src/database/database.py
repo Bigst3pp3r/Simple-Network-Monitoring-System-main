@@ -156,6 +156,33 @@ def get_alerts_by_severity():
         print(f"Error fetching alert counts: {e}")
 
     return counts  # Return dictionary of severity counts
+
+
+def get_alerts_by_timeframe(timeframe):
+    """
+    Fetch alerts grouped by a specific timeframe (daily, weekly, monthly).
+    
+    Args:
+        timeframe (str): "daily", "weekly", or "monthly"
+    
+    Returns:
+        List of tuples (timestamp, message, alert_type, severity)
+    """
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+
+        # ✅ Determine the date range based on timeframe
+        if timeframe == "daily":
+            query = "SELECT timestamp, message, type, severity FROM alerts WHERE timestamp >= date('now', '-1 day')"
+        elif timeframe == "weekly":
+            query = "SELECT timestamp, message, type, severity FROM alerts WHERE timestamp >= date('now', '-7 days')"
+        elif timeframe == "monthly":
+            query = "SELECT timestamp, message, type, severity FROM alerts WHERE timestamp >= date('now', '-1 month')"
+        else:
+            return []  # Invalid timeframe
+        
+        cursor.execute(query)
+        return cursor.fetchall()
      
                 
 def log_device(ip, mac, manufacturer, device_name, device_type, status="connected"):

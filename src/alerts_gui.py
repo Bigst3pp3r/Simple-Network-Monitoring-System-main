@@ -1,7 +1,8 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
-from database.database import get_alerts # Fetch stored alerts
-
+from tkinter import ttk
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from database.database import get_alerts_by_timeframe  # Fetch alerts by day/week/month
 
 # Severity color mapping
 SEVERITY_COLORS = {
@@ -10,77 +11,70 @@ SEVERITY_COLORS = {
     "Low": "green"
 }
 
-REFRESH_INTERVAL = 5000  # 5 seconds (adjust as needed)
-
-def display_alert(message):
-        """Function to display alerts in the Alerts tab."""
-        print(f"ALERT: {message}")  # Modify this to update the GUI instead of printing
+REFRESH_INTERVAL = 5000  # 5 seconds
 
 def create_alerts_tab(parent):
-    """Creates the alerts GUI tab for real-time monitoring and past alerts."""
+    """Creates the alerts GUI tab with a table and alerts over time chart."""
     frame = ttk.Frame(parent, padding=10)
 
-    # Title Label
-    ttk.Label(frame, text="Real-Time Alerts", font=("Arial", 12, "bold")).pack(pady=5)
+    # ✅ Title Label
+    ttk.Label(frame, text="🚨 Alerts & Statistics", font=("Arial", 14, "bold")).pack(pady=5)
 
-    # Table (Treeview) with Scrollbars
+    # ✅ Table Frame with Scrollbars
+    table_frame = ttk.Frame(frame)
+    table_frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+
     columns = ("Timestamp", "Message", "Type", "Severity")
-    
-    tree_frame = ttk.Frame(frame)
-    tree_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
+    alert_tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=8)
 
-    alert_tree = ttk.Treeview(tree_frame, columns=columns, show="headings", height=10)
-    
-    # Define column headings
-    alert_tree.heading("Timestamp", text="Timestamp", anchor=tk.W)
-    alert_tree.heading("Message", text="Message", anchor=tk.W)
-    alert_tree.heading("Severity", text="Severity", anchor=tk.W)
+    for col in columns:
+        alert_tree.heading(col, text=col, anchor=tk.W)
+        alert_tree.column(col, width=150 if col == "Timestamp" else 250, anchor=tk.W)
 
-    # Define column widths
-    alert_tree.column("Timestamp", width=150, anchor=tk.W)
-    alert_tree.column("Message", width=300, anchor=tk.W)
-    alert_tree.heading("Type", text="Type", anchor=tk.W)
-    alert_tree.column("Severity", width=100, anchor=tk.CENTER)
-
-    # Add vertical scrollbar
-    v_scroll = ttk.Scrollbar(tree_frame, orient="vertical", command=alert_tree.yview)
+    v_scroll = ttk.Scrollbar(table_frame, orient="vertical", command=alert_tree.yview)
     alert_tree.configure(yscrollcommand=v_scroll.set)
     v_scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
-    # Add horizontal scrollbar
-    h_scroll = ttk.Scrollbar(frame, orient="horizontal", command=alert_tree.xview)
-    alert_tree.configure(xscrollcommand=h_scroll.set)
-    h_scroll.pack(fill=tk.X)
-
     alert_tree.pack(fill=tk.BOTH, expand=True)
-    
 
-    def load_alerts():
-        """Loads and displays alerts from the database."""
-        alert_tree.delete(*alert_tree.get_children())  # Clear previous entries
-        alerts = get_alerts()
+    # ✅ Graph Area - Alerts Over Time
+    graph_frame = ttk.Frame(frame)
+    graph_frame.pack(fill="both", expand=True, padx=5, pady=5)
 
-        if not alerts:
-            return
+    fig, ax = plt.subplots(figsize=(6, 3))
+    canvas = FigureCanvasTkAgg(fig, master=graph_frame)
+    canvas.get_tk_widget().pack(fill="both", expand=True)
 
-        for timestamp, message, type, severity in alerts:
-            alert_tree.insert("", tk.END, values=(timestamp, message, type, severity))
+    # ✅ Dropdown for Timeframe Selection
+    timeframe_var = tk.StringVar(value="Daily")
+    ttk.Label(frame, text="View Alerts:", font=("Arial", 10)).pack()
+    timeframe_dropdown = ttk.Combobox(frame, textvariable=timeframe_var, values=["Daily", "Weekly", "Monthly"])
+    timeframe_dropdown.pack(pady=2)
 
-        # Schedule next refresh
-        frame.after(REFRESH_INTERVAL, load_alerts)  # Auto-refresh every 5 seconds
-        
-    def clear_alerts():
-        """Clears the alert table display."""
-        alert_tree.delete(*alert_tree.get_children())
+    def update_alerts():
+        """Fetch and update alert data in table & graph."""
+        alert_tree.delete(*alert_tree.get_children())  # Clear table
+        alerts = get_alerts_by_timeframe(timeframe_var.get().lower())  # Fetch alerts (day/week/month)
 
-    # Buttons for manual refresh and clear
-    button_frame = ttk.Frame(frame)
-    button_frame.pack(pady=5)
+        if alerts:
+            # Populate Table
+            for timestamp, message, alert_type, severity in alerts:
+                alert_tree.insert("", tk.END, values=(timestamp, message, alert_type, severity))
 
-    ttk.Button(button_frame, text="Refresh Now", command=load_alerts).pack(side=tk.LEFT, padx=5)
-    ttk.Button(button_frame, text="Clear Alerts", command=clear_alerts).pack(side=tk.LEFT, padx=5)
+            # Update Graph
+            ax.clear()
+            severity_counts = {"High": 0, "Medium": 0, "Low": 0}
+            for _, _, _, severity in alerts:
+                severity_counts[severity] += 1
 
-    # Load alerts initially and start auto-refresh
-    load_alerts()
+            ax.bar(severity_counts.keys(), severity_counts.values(), color=[SEVERITY_COLORS[s] for s in severity_counts])
+            ax.set_title(f"Alerts Over Time ({timeframe_var.get()})")
+            ax.set_ylabel("Alert Count")
+
+        canvas.draw()
+        frame.after(REFRESH_INTERVAL, update_alerts)  # Auto-refresh every 5s
+
+    timeframe_dropdown.bind("<<ComboboxSelected>>", lambda event: update_alerts())
+    update_alerts()  # Initial Load
 
     return frame
