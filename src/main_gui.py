@@ -48,9 +48,6 @@ def start_monitoring():
 start_monitoring()
 
 
-
-
-
 root.mainloop()
 
 

@@ -1,6 +1,8 @@
 import tkinter as tk
+from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.patches import Rectangle
 import time
 
 def create_dashboard_tab(parent, monitor):
@@ -13,96 +15,122 @@ def create_dashboard_tab(parent, monitor):
     summary_label.pack()
     summary_text = tk.Label(summary_frame, text="Packets: 0 | Alerts: 0", font=("Arial", 10), bg="#f0f0f0")
     summary_text.pack()
+    
+    
+    def toggle_monitoring():
+            """Pauses or resumes packet monitoring."""
+            if monitor.state.is_active:
+                monitor.state.is_active = False
+                monitoring_status.set("Resume Monitoring")  # Update button text
+            else:
+                monitor.state.is_active = True
+                monitoring_status.set("Pause Monitoring")
+    
+    # ✅ Pause/Continue Monitoring Button
+    monitoring_status = tk.StringVar(value="Pause Monitoring")  # Default state
+    pause_button = ttk.Button(frame, textvariable=monitoring_status, command=toggle_monitoring)
+    pause_button.pack(pady=5)
 
-    # Create Matplotlib figure with 3 subplots
-    fig, axs = plt.subplots(3, 1, figsize=(5, 8))
+
+    # ✅ Create a Matplotlib figure with subplots
+    fig, axs = plt.subplots(2, 2, figsize=(8, 6))  # 2 Rows, 2 Columns
+
+    # Line Graph - Traffic Over Time
+    axs[0, 0].set_title("Traffic Over Time")
+    axs[0, 0].set_xlabel("Time")
+    axs[0, 0].set_ylabel("Packet Count")
+    line, = axs[0, 0].plot([], marker="o", linestyle="-", color="blue")
+
+    # Bar Chart - Protocol Distribution
+    axs[0, 1].set_title("Protocol Distribution")
+    axs[0, 1].set_ylabel("Packet Count")
+
+    # Pie Chart - Traffic Composition
+    axs[1, 0].set_title("Traffic Composition")
+
+    # Bar Chart - Alerts by Severity
+    axs[1, 1].set_title("Alerts by Severity")
+    axs[1, 1].set_ylabel("Count")
+    severity_colors = ["red", "orange", "green"]
+    severity_labels = ["High", "Medium", "Low"]
+
+    # ✅ Embed Matplotlib canvas inside Tkinter
     canvas = FigureCanvasTkAgg(fig, master=frame)
     canvas.get_tk_widget().pack(fill="both", expand=True)
 
-    # ✅ Line Graph - Traffic Over Time
-    axs[0].set_title("Traffic Over Time")
-    axs[0].set_xlabel("Time")
-    axs[0].set_ylabel("Packet Count")
-    line, = axs[0].plot([], marker="o", linestyle="-", color="blue")
-
-    # ✅ Bar Chart - Protocol Distribution
-    axs[1].set_title("Protocol Distribution")
-    axs[1].set_ylabel("Packet Count")
-
-    # ✅ Pie Chart - Traffic Composition
-    axs[2].set_title("Traffic Composition")
-
     # Store time (x) and packet count (y) data
-    x_data, y_data = [], []  
+    x_data, y_data = [], []
 
-    # ✅ Tooltip Label (For Hovering)
-    tooltip_label = tk.Label(frame, text="", font=("Arial", 10), bg="yellow", relief="solid", borderwidth=1)
-    tooltip_label.place_forget()  # Hide initially
+    # Create a tooltip label for displaying protocol information
+    tooltip_text = tk.StringVar()
+    tooltip_label = tk.Label(frame, textvariable=tooltip_text, bg="yellow", relief="solid", borderwidth=1)
+    
 
-    # ✅ Bar Chart Hover Storage (Stores Bars & Protocol Data)
-    bar_patches = []  
-    protocol_labels = []  
 
+    # ✅ Function to Update Charts
     def update_charts():
-        """ Updates charts with real-time data """
+        if not monitor.state.is_active:
+            frame.after(1000, update_charts)  # Check again in 1s
+            return  # Stop updates when paused
+
         packet_count = monitor.get_packet_count()
         protocol_counts = monitor.get_protocol_counts()
-        alert_count = monitor.get_alert_count()
+        alert_counts = monitor.get_alert_count_by_severity()  # Fetch severity count
 
         # ✅ Update Traffic Summary Window
-        summary_text.config(text=f"Packets: {packet_count} | Alerts: {alert_count}")
+        summary_text.config(text=f"Packets: {packet_count} | Alerts: {sum(alert_counts.values())}")
 
-        # ✅ Update Line Graph - Track Traffic Over Time
+        # ✅ Update Line Graph
         x_data.append(time.time())  # Use timestamp for X-axis
         y_data.append(packet_count)  # Store packet count
+        axs[0, 0].clear()
+        axs[0, 0].set_title("Traffic Over Time")
+        axs[0, 0].set_xlabel("Time")
+        axs[0, 0].set_ylabel("Packet Count")
+        axs[0, 0].plot(x_data, y_data, marker="o", linestyle="-", color="blue")
 
-        axs[0].clear()
-        axs[0].set_title("Traffic Over Time")
-        axs[0].set_xlabel("Time")
-        axs[0].set_ylabel("Packet Count")
-        axs[0].plot(x_data, y_data, marker="o", linestyle="-", color="blue")
+        # ✅ Update Protocol Bar Chart
+        axs[0, 1].clear()
+        bars = axs[0, 1].bar(protocol_counts.keys(), protocol_counts.values(), color=["red", "green", "blue"])
+        axs[0, 1].set_title("Protocol Distribution")
 
-        # ✅ Update Bar Chart - Protocol Distribution
-        axs[1].clear()
-        bar_patches.clear()
-        protocol_labels.clear()
-        bars = axs[1].bar(protocol_counts.keys(), protocol_counts.values(), color=["red", "green", "blue"])
-        axs[1].set_title("Protocol Distribution")
+        canvas.mpl_connect("motion_notify_event", on_hover)  # Attach hover event
 
-        # ✅ Store bar patches & protocol labels for hovering
-        for bar, (protocol, count) in zip(bars, protocol_counts.items()):
-            bar_patches.append(bar)
-            protocol_labels.append(f"{protocol}: {count} packets")
+        # ✅ Update Pie Chart
+        axs[1, 0].clear()
+        axs[1, 0].pie(protocol_counts.values(), labels=protocol_counts.keys(), autopct="%1.1f%%")
+        axs[1, 0].set_title("Traffic Composition")
 
-        # ✅ Update Pie Chart - Traffic Composition
-        axs[2].clear()
-        axs[2].pie(protocol_counts.values(), labels=protocol_counts.keys(), autopct="%1.1f%%")
-        axs[2].set_title("Traffic Composition")
+        # ✅ Update Alerts Bar Chart (Sorted by Severity)
+        axs[1, 1].clear()
+        axs[1, 1].bar(severity_labels, [alert_counts.get(s, 0) for s in severity_labels], color=severity_colors)
+        axs[1, 1].set_title("Alerts by Severity")
 
         canvas.draw()
         frame.after(5000, update_charts)  # Refresh every 5s
 
-    # ✅ Hovering Tooltip Function
-    def on_hover(event):
-        """Displays tooltip when hovering over graphs."""
-        for i, ax in enumerate(axs):
-            if ax.contains(event)[0]:  # Check if mouse is inside a graph
-                if i == 0:  # Line Graph
-                    tooltip_label.config(text=f"Packet Count: {monitor.get_packet_count()}")
-                elif i == 1:  # Bar Chart (Protocol Distribution)
-                    for bar, label in zip(bar_patches, protocol_labels):
-                        if bar.contains(event)[0]:  # Check if hovering over a bar
-                            tooltip_label.config(text=label)
-                            break
-                elif i == 2:  # Pie Chart
-                    tooltip_label.config(text="Traffic Composition")
-
-                tooltip_label.place(x=event.x + 20, y=event.y + 20)
-                return
         
-        tooltip_label.place_forget()  # Hide tooltip if not hovering
+    def on_hover(event):
+        """Displays tooltip on hover over protocol bars."""
+        protocol_counts = monitor.get_protocol_counts()  # Fetch protocol counts
+        if event.inaxes == axs[0, 1]:  # Ensure the event is inside the bar chart
+            x, y = event.xdata, event.ydata
+            if x is not None and y is not None:
+                # Find the closest bar (protocol) based on x-coordinates
+                index = int(round(x)) if 0 <= round(x) < len(protocol_counts) else None
+                if index is not None:
+                    protocol = list(protocol_counts.keys())[index]  # Get protocol name
+                    packet_count = protocol_counts.get(protocol, 0)  # Get packet count
+                    
+                    # Show tooltip info
+                    tooltip_text.set(f"{protocol}: {packet_count} packets")
+                    tooltip_label.place(x=event.x, y=event.y)
+        else:
+            tooltip_label.place_forget()  # Hide tooltip if outside the bar chart
 
-    canvas.mpl_connect("motion_notify_event", on_hover)  # Bind hovering event
+
+        fig.canvas.mpl_connect("motion_notify_event", on_hover)
+
     update_charts()  # Start updating
 
     return frame

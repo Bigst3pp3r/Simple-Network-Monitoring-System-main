@@ -10,6 +10,7 @@ from database.database import initialize_database
 from network_scanner import scan_network
 from real_time_monitor import monitor_network
 from traffic_summary import display_summary  # ✅ Import function
+from database.database import get_alerts_by_severity  # Import database function
 
 class NetworkMonitor:
     def __init__(self):
@@ -53,6 +54,16 @@ class NetworkMonitor:
     def get_alert_count(self):
         """Returns the total alert count."""
         return self.alert_count
+    
+    
+    def get_alert_count_by_severity(self):
+        """
+        Retrieves the count of alerts categorized by severity.
+
+        Returns:
+            dict: {"High": count, "Medium": count, "Low": count}
+        """
+        return get_alerts_by_severity() 
 
     def get_traffic_summary(self):
         """Fetches the latest real-time traffic summary from state."""

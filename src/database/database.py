@@ -2,9 +2,6 @@ import sqlite3
 
 # Initialize the database connection
 
-
-import sqlite3
-
 def initialize_database():
     """
     Initializes the database with necessary tables.
@@ -133,6 +130,33 @@ def get_alerts():
         return []
     finally:
         conn.close()
+        
+
+def get_alerts_by_severity():
+    """
+    Retrieves the count of alerts grouped by severity.
+
+    Returns:
+        dict: {"High": count, "Medium": count, "Low": count}
+    """
+    severity_levels = ["High", "Medium", "Low"]
+    counts = {level: 0 for level in severity_levels}  # Initialize counts
+
+    try:
+        with sqlite3.connect("network_monitoring.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT severity, COUNT(*) FROM alerts GROUP BY severity")
+            results = cursor.fetchall()
+
+            for severity, count in results:
+                if severity in counts:
+                    counts[severity] = count  # Update count for severity
+
+    except sqlite3.Error as e:
+        print(f"Error fetching alert counts: {e}")
+
+    return counts  # Return dictionary of severity counts
+     
                 
 def log_device(ip, mac, manufacturer, device_name, device_type, status="connected"):
     """
