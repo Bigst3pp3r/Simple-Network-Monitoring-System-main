@@ -184,6 +184,33 @@ def get_alerts_by_timeframe(timeframe):
         cursor.execute(query)
         return cursor.fetchall()
      
+def get_alerts_by_date_range(start_date, end_date):
+        """
+        Retrieve alerts from the database within a given date range.
+
+        Args:
+            start_date (str): The starting date (YYYY-MM-DD).
+            end_date (str): The ending date (YYYY-MM-DD).
+
+        Returns:
+            list: A list of tuples containing (timestamp, message, type, severity).
+        """
+        try:
+            with sqlite3.connect("network_monitoring.db") as conn:
+                cursor = conn.cursor()
+                query = """
+                    SELECT timestamp, message, type, severity
+                    FROM alerts
+                    WHERE DATE(timestamp) BETWEEN ? AND ?
+                    ORDER BY timestamp ASC
+                """
+                cursor.execute(query, (start_date, end_date))
+                return cursor.fetchall()  # Returns a list of (timestamp, message, type, severity) tuples
+        except sqlite3.Error as e:
+            print(f"Error retrieving alerts by date range: {e}")
+            return []
+     
+     
                 
 def log_device(ip, mac, manufacturer, device_name, device_type, status="connected"):
     """
