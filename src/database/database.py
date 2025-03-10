@@ -83,6 +83,32 @@ def save_packet(timestamp, source_ip, destination_ip, protocol):
             """, (timestamp, source_ip, destination_ip, protocol))
     except sqlite3.Error as e:
         print(f"Error saving packet: {e}")
+        
+        
+def get_packets(limit=100):
+        """
+        Fetches the most recent packets from the database.
+
+        Args:
+            limit (int): Number of packets to retrieve (default: 100).
+
+        Returns:
+            list of tuples: Each tuple contains (timestamp, source_ip, destination_ip, protocol, length).
+        """
+        try:
+            with sqlite3.connect("network_monitoring.db") as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    SELECT timestamp, source_ip, destination_ip, protocol, LENGTH(protocol) 
+                    FROM packets
+                    ORDER BY timestamp DESC
+                    LIMIT ?
+                """, (limit,))
+                return cursor.fetchall()
+        except sqlite3.Error as e:
+            print(f"Error fetching packets: {e}")
+            return []
+
 
 
 def save_alert(timestamp, message, type, severity="Medium"):
