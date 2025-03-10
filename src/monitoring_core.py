@@ -25,23 +25,31 @@ class NetworkMonitor:
         summary_thread = threading.Thread(target=display_summary, args=(self.state,), daemon=True)
         summary_thread.start()
 
+
     def start_monitoring(self):
-        """Starts the network monitoring process."""
+        """Starts network monitoring in a non-blocking way."""
         initialize_database()
         setup_logging()
+
+        self.state.is_active = True  # Ensure monitoring is active
 
         alert_thread = threading.Thread(target=self.alert_monitor, args=(self.state,), daemon=True)
         alert_thread.start()
 
         try:
             print("Starting packet capture... Press Ctrl+C to stop.")
-            sniff(prn=lambda packet: process_packet(packet, self.state), store=False, filter=self.chosen_filter)
-        except KeyboardInterrupt:
-            print("\nStopping packet capture...")
+            sniff(prn=lambda packet: process_packet(packet, self.state), store=False, filter=self.chosen_filter, timeout=5)
+            
+            # ✅ Restart sniffing in intervals to avoid freezing
+            if self.state.is_active:
+                threading.Thread(target=self.start_monitoring, daemon=True).start()
+
         except Exception as e:
             print(f"Error occurred: {e}")
+
         finally:
-            self.state.is_active = False  # Stop monitoring
+            self.state.is_active = False  # Stop monitoring when exiting
+
 
     def get_packet_count(self):
         """Returns the total number of packets captured."""
