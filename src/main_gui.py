@@ -3,6 +3,7 @@ import threading
 from dashboard import create_dashboard_tab
 from settings_gui import create_settings_tab
 from alerts_gui import create_alerts_tab
+from packets_gui import create_packets_tab  # ✅ Import Packets Tab
 
 # ✅ Lazy Import to Prevent Circular Dependency
 def initialize_monitor():
@@ -24,8 +25,10 @@ monitor = initialize_monitor()
 
 tabs = {
     "📊 Dashboard": create_dashboard_tab(main_content, monitor),  # Pass monitor
+    "📡 Packets": create_packets_tab(main_content),  # ✅ Add Packets Tab
     "🚨 Alerts": create_alerts_tab(main_content),
     "⚙ Settings": create_settings_tab(main_content),
+    
 }
 
 def switch_tab(tab_name):
