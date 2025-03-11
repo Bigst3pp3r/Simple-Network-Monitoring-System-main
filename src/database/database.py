@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime, timedelta
 
 # Initialize the database connection
 
@@ -108,6 +109,66 @@ def get_packets(limit=100):
         except sqlite3.Error as e:
             print(f"Error fetching packets: {e}")
             return []
+
+
+
+import sqlite3
+from datetime import datetime, timedelta
+
+def get_packets_by_timeframe(timeframe):
+    """
+    Fetch packets grouped by date and protocol for visualization.
+    
+    Args:
+        timeframe (str): "daily", "weekly", "monthly", or "all-time"
+    
+    Returns:
+        List of tuples: [(date, source_ip, destination_ip, protocol, length)]
+    """
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+
+        # Get current date
+        today = datetime.now().date()
+
+        if timeframe == "daily":
+            query = """
+                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                FROM packets 
+                WHERE DATE(timestamp) = ?
+            """
+            cursor.execute(query, (today.strftime('%Y-%m-%d'),))
+        
+        elif timeframe == "weekly":
+            week_start = today - timedelta(days=today.weekday())  # Start of the week (Monday)
+            query = """
+                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                FROM packets 
+                WHERE DATE(timestamp) >= ?
+            """
+            cursor.execute(query, (week_start.strftime('%Y-%m-%d'),))
+        
+        elif timeframe == "monthly":
+            month_start = today.replace(day=1)  # First day of the month
+            query = """
+                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                WHERE DATE(timestamp) >= ?
+            """
+            cursor.execute(query, (month_start.strftime('%Y-%m-%d'),))
+        
+        elif timeframe == "all-time":
+            query = """
+                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                FROM packets
+            """
+            cursor.execute(query)
+        
+        else:
+            return []  # Invalid timeframe
+        
+        return cursor.fetchall()  # ✅ Returns properly formatted dates
+
+
 
 
 
@@ -236,7 +297,7 @@ def get_alerts_by_date_range(start_date, end_date):
             print(f"Error retrieving alerts by date range: {e}")
             return []
      
-     
+
                 
 def log_device(ip, mac, manufacturer, device_name, device_type, status="connected"):
     """

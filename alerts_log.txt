@@ -924,3 +924,615 @@
 2025-03-10 16:10:26 | ALERT: High traffic detected: 4781 packets! [Type: Traffic, Severity: High]
 2025-03-10 16:11:44 | ALERT: High traffic detected: 4831 packets! [Type: Traffic, Severity: High]
 2025-03-10 16:11:44 | ALERT: High traffic detected: 4831 packets! [Type: Traffic, Severity: High]
+2025-03-10 19:39:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:39:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:10 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:10 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:15 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:15 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:33 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:33 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:40:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:10 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:10 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:37 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:37 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:41:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:40 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:40 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:45 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:45 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:50 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:50 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:55 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:55 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:56 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:56 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:42:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:01 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:01 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:08 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:08 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:13 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:13 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:17 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:17 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:33 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:33 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:37 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:37 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:37 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:37 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:39 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:39 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:40 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:40 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:45 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:45 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:45 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:45 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:50 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:50 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:50 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:50 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:54 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:55 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:55 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:55 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:55 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:58 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:43:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:01 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:01 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:03 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:08 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:08 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:19 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:20 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:20 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:24 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:25 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:25 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:25 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:25 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:29 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:30 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:30 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:30 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:30 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:30 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:30 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:32 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:34 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-10 19:44:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:15 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:15 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:31 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:31 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:36 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:36 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:37:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:00 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:06 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:22 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:33 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:33 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:38 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:43 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:48 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:38:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:15 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:15 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:20 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:20 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:26 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:31 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:31 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:36 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:36 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:39:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:04 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:09 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:14 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:20 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:20 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:25 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:25 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:31 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:31 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:36 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:36 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:42 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:47 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:53 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:40:59 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:01 | ALERT: High traffic detected: 1001 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:02 | ALERT: High traffic detected: 1005 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:02 | ALERT: High traffic detected: 1007 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:02 | ALERT: High traffic detected: 1007 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:02 | ALERT: High traffic detected: 1008 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:02 | ALERT: High traffic detected: 1010 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:02 | ALERT: High traffic detected: 1010 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:02 | ALERT: High traffic detected: 1010 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1011 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1011 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:03 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:04 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:05 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:05 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:05 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:05 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:05 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:05 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:06 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:07 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:07 | ALERT: High traffic detected: 1012 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:08 | ALERT: High traffic detected: 1017 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:08 | ALERT: High traffic detected: 1018 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:08 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:08 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:08 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:09 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:09 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:09 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:09 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:09 | ALERT: High traffic detected: 1019 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:09 | ALERT: High traffic detected: 1020 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:09 | ALERT: High traffic detected: 1021 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:10 | ALERT: High traffic detected: 1023 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:10 | ALERT: High traffic detected: 1024 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:10 | ALERT: High traffic detected: 1025 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:10 | ALERT: High traffic detected: 1026 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:10 | ALERT: High traffic detected: 1028 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:11 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:11 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:11 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:11 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:11 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:11 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:11 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:11 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:12 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:12 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:12 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:12 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:12 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:12 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:13 | ALERT: High traffic detected: 1029 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:13 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:13 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:14 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:14 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:14 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:14 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:14 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1030 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:16 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:16 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:17 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:18 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:18 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:18 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:18 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:18 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:18 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:18 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:19 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:19 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:19 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:19 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:19 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:19 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:19 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:20 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:20 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:20 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:20 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:20 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:20 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:21 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:21 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:21 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:21 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:21 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:21 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:21 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:21 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:22 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:22 | ALERT: High traffic detected: 1031 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:22 | ALERT: High traffic detected: 1033 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:22 | ALERT: High traffic detected: 1035 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:22 | ALERT: High traffic detected: 1035 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:22 | ALERT: High traffic detected: 1036 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:22 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:23 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:24 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:24 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:24 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:24 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:24 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:24 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:24 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:25 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1037 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:26 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:27 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:27 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:27 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:27 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:27 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:28 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:28 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:28 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:28 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:28 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:28 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:29 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:29 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:29 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:29 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:30 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:30 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:30 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:30 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:31 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:31 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:31 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:31 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:32 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:32 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:32 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:32 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:32 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:32 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:33 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:33 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:33 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:33 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:33 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:34 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:34 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:34 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:35 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:35 | ALERT: High traffic detected: 1038 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:35 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:35 | ALERT: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-11 10:41:35 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:35 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:36 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:36 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:36 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:36 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:36 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:36 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:37 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:37 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:37 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:37 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:37 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
+2025-03-11 10:41:37 | ALERT: High traffic detected: 1039 packets! [Type: Traffic, Severity: High]
