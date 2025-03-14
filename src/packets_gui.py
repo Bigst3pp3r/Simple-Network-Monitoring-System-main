@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import matplotlib.ticker as mticker  # ✅ For "K" number formatting
 from database.database import get_packets_by_timeframe
 
 # Define protocol colors for grouped bar chart
@@ -26,7 +27,7 @@ def create_packets_tab(parent):
     filter_frame.pack(fill=tk.X, padx=5, pady=5)
 
     ttk.Label(filter_frame, text="📅 View Packets:", font=("Arial", 10)).pack(side=tk.LEFT, padx=5)
-    timeframe_var = tk.StringVar(value="Daily")
+    timeframe_var = tk.StringVar(value="Weekly")  # ✅ Default view is Weekly
     timeframe_dropdown = ttk.Combobox(filter_frame, textvariable=timeframe_var, values=["Daily", "Weekly", "Monthly", "All-Time"])
     timeframe_dropdown.pack(side=tk.LEFT, padx=5)
 
@@ -64,6 +65,16 @@ def create_packets_tab(parent):
     canvas = FigureCanvasTkAgg(fig, master=graph_frame)
     canvas.get_tk_widget().pack(fill="both", expand=True)
 
+    # ✅ Tooltip Label (Hidden by default)
+    tooltip_label = tk.Label(graph_frame, bg="yellow", fg="black", relief="solid", borderwidth=1)
+    tooltip_label.place_forget()  # Hide tooltip initially
+
+    def format_large_numbers(x, _):
+        """Formats numbers into 'K' for thousands (e.g., 1.2K)."""
+        if x >= 1000:
+            return f"{x / 1000:.1f}K"
+        return str(int(x))
+
     def update_packets():
         """Fetch and update packet data in the table and grouped bar chart."""
         packet_tree.delete(*packet_tree.get_children())  # Clear table
@@ -94,17 +105,35 @@ def create_packets_tab(parent):
             x_positions = range(len(dates))
 
             selected_protocol = protocol_var.get()
+            bars = []  # Store bars for hover interaction
             for i, (protocol, counts) in enumerate(protocol_counts.items()):
                 if selected_protocol == "All" or selected_protocol == protocol:
-                    ax.bar([x + i * bar_width for x in x_positions], counts, width=bar_width, label=protocol, color=PROTOCOL_COLORS[protocol])
+                    bar = ax.bar([x + i * bar_width for x in x_positions], counts, width=bar_width, label=protocol, color=PROTOCOL_COLORS[protocol])
+                    bars.append((protocol, bar))
 
             ax.set_xticks([x + bar_width for x in x_positions])
             ax.set_xticklabels(dates, rotation=45)
             ax.set_title(f"Packet Distribution Over Time ({timeframe_var.get()})")
             ax.set_ylabel("Packet Count")
             ax.legend()
+            ax.yaxis.set_major_formatter(mticker.FuncFormatter(format_large_numbers))  # ✅ Apply 'K' format
 
-        canvas.draw()
+            canvas.draw()
+
+            # ✅ Hover Event Handler
+            def on_hover(event):
+                """Displays protocol details on hover."""
+                if event.inaxes == ax:
+                    for protocol, bar_set in bars:
+                        for rect in bar_set:
+                            if rect.contains(event)[0]:
+                                tooltip_label.config(text=f"{protocol}: {int(rect.get_height())} packets")
+                                tooltip_label.place(x=event.x + 10, y=event.y - 20)
+                                return
+                tooltip_label.place_forget()  # Hide tooltip if not hovering over a bar
+
+            canvas.mpl_connect("motion_notify_event", on_hover)  # Attach hover event
+
         frame.after(REFRESH_INTERVAL, update_packets)  # Auto-refresh every 5s
 
     # ✅ Export Functionality
@@ -131,21 +160,3 @@ def create_packets_tab(parent):
     update_packets()  # Initial Load
 
     return frame
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
