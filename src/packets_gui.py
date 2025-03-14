@@ -154,8 +154,6 @@ def create_packets_tab(parent):
             ax.set_title(f"Packet Distribution Over Time ({timeframe_var.get()})")
             ax.set_ylabel("Packet Count")
 
-            
-
             ax.legend()
             canvas.draw()
 
@@ -175,6 +173,19 @@ def create_packets_tab(parent):
             canvas.mpl_connect("motion_notify_event", on_hover)  # Attach hover event
 
         frame.after(REFRESH_INTERVAL, update_packets)  # Auto-refresh every 5s
+       
+    def export_chart():
+        """Save the current graph as an image."""
+        file_path = filedialog.asksaveasfilename(defaultextension=".png",
+                                                filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg")])
+        if file_path:
+            fig.savefig(file_path)
+            tk.messagebox.showinfo("Export Successful", f"Chart saved to {file_path}")
+
+    # Add button to UI
+    export_button = ttk.Button(frame, text="📤 Export Chart", command=export_chart)
+    export_button.pack(pady=5)
+
 
     # ✅ Export Functionality
     def export_packets():
