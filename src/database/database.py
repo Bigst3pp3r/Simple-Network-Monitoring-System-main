@@ -112,8 +112,6 @@ def get_packets(limit=100):
 
 
 
-import sqlite3
-from datetime import datetime, timedelta
 
 def get_packets_by_timeframe(timeframe):
     """
@@ -133,7 +131,7 @@ def get_packets_by_timeframe(timeframe):
 
         if timeframe == "daily":
             query = """
-                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol) 
                 FROM packets 
                 WHERE DATE(timestamp) = ?
             """
@@ -142,7 +140,7 @@ def get_packets_by_timeframe(timeframe):
         elif timeframe == "weekly":
             week_start = today - timedelta(days=today.weekday())  # Start of the week (Monday)
             query = """
-                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol) 
                 FROM packets 
                 WHERE DATE(timestamp) >= ?
             """
@@ -152,13 +150,14 @@ def get_packets_by_timeframe(timeframe):
             month_start = today.replace(day=1)  # First day of the month
             query = """
                 SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                FROM packets 
                 WHERE DATE(timestamp) >= ?
             """
             cursor.execute(query, (month_start.strftime('%Y-%m-%d'),))
         
         elif timeframe == "all-time":
             query = """
-                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)
+                SELECT DATE(timestamp), source_ip, destination_ip, protocol, LENGTH(protocol)  
                 FROM packets
             """
             cursor.execute(query)
@@ -167,6 +166,7 @@ def get_packets_by_timeframe(timeframe):
             return []  # Invalid timeframe
         
         return cursor.fetchall()  # ✅ Returns properly formatted dates
+
 
 
 
