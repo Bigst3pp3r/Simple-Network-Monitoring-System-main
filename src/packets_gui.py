@@ -3,6 +3,7 @@ from tkinter import ttk, filedialog
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.ticker as mticker  # ✅ For "K" number formatting
+import numpy as np
 from database.database import get_packets_by_timeframe
 
 # Define protocol colors for grouped bar chart
@@ -75,6 +76,25 @@ def create_packets_tab(parent):
             return f"{x / 1000:.1f}K"
         return str(int(x))
 
+
+
+    def compute_moving_average(data, window_size=3):
+        """
+        Compute the moving average for a given list of data.
+        
+        Args:
+            data (list): List of numerical values.
+            window_size (int): Number of points to average over.
+        
+        Returns:
+            list: Moving average values (same length as input, padded with NaN at start).
+        """
+        if len(data) < window_size:
+            return data  # Not enough data for averaging
+
+        return np.convolve(data, np.ones(window_size)/window_size, mode='valid').tolist()
+
+
     def update_packets():
         """Fetch and update packet data in the table and grouped bar chart."""
         packet_tree.delete(*packet_tree.get_children())  # Clear table
@@ -119,6 +139,26 @@ def create_packets_tab(parent):
             ax.yaxis.set_major_formatter(mticker.FuncFormatter(format_large_numbers))  # ✅ Apply 'K' format
 
             canvas.draw()
+
+            # ✅ Compute Moving Average for Total Packets Over Time
+            total_packets_per_day = [sum(counts) for counts in zip(*protocol_counts.values())]  # Sum across all protocols
+            moving_avg = compute_moving_average(total_packets_per_day, window_size=3)  # Smooth data
+
+            # ✅ Plot Moving Average Line
+            ax.plot(range(1, len(moving_avg) + 1), moving_avg, marker="o", linestyle="-", color="black", linewidth=2, label="Moving Avg")
+
+            ax.legend()  # Ensure legend is updated
+
+            ax.set_xticks([x + bar_width for x in x_positions])
+            ax.set_xticklabels(dates, rotation=45)
+            ax.set_title(f"Packet Distribution Over Time ({timeframe_var.get()})")
+            ax.set_ylabel("Packet Count")
+
+            
+
+            ax.legend()
+            canvas.draw()
+
 
             # ✅ Hover Event Handler
             def on_hover(event):
