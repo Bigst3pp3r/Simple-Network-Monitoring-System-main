@@ -109,16 +109,30 @@ def create_devices_tab(parent):
     table_frame = ttk.Frame(frame)
     table_frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 
+    # ✅ Define Columns
     columns = ("IP Address", "MAC Address", "Manufacturer", "Device Name", "Device Type")
     device_tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=8)
 
+    # ✅ Style Headers
     for col in columns:
-        device_tree.heading(col, text=col, anchor=tk.W)
-        device_tree.column(col, width=150 if col == "IP Address" else 200, anchor=tk.W)
+        device_tree.heading(col, text=col, anchor=tk.CENTER)
+        device_tree.column(col, width=150, anchor=tk.CENTER)
 
+    # ✅ Apply Row Stripes & Styling
+    style = ttk.Style()
+    style.configure("Treeview", font=("Arial", 10), rowheight=25)  # Adjust row height
+    style.configure("Treeview.Heading", font=("Arial", 11, "bold"))  # Bold headers
+    style.map("Treeview", background=[("selected", "#3498db")])  # Row selection color
+    
+    # ✅ Add Vertical Scrollbar
     v_scroll = ttk.Scrollbar(table_frame, orient="vertical", command=device_tree.yview)
     device_tree.configure(yscrollcommand=v_scroll.set)
     v_scroll.pack(side=tk.RIGHT, fill=tk.Y)
+
+    # ✅ Add Horizontal Scrollbar
+    h_scroll = ttk.Scrollbar(table_frame, orient="horizontal", command=device_tree.xview)
+    device_tree.configure(xscrollcommand=h_scroll.set)
+    h_scroll.pack(fill=tk.X)
 
     device_tree.pack(fill=tk.BOTH, expand=True)
 
