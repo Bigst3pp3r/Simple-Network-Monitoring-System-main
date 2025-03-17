@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import threading
-from scapy.all import ARP, Ether, srp
+from scapy.all import ARP, Ether, srp, IP, ICMP, sr1
 import socket
 import requests
 
@@ -9,13 +9,27 @@ import requests
 OUI_LOOKUP_API = "https://api.maclookup.app/v2/macs/"
 
 def get_manufacturer(mac_address):
-    """Fetches manufacturer using MAC address."""
+    """Fetches manufacturer using MAC address (fallback for failures)."""
     try:
         response = requests.get(OUI_LOOKUP_API + mac_address, timeout=3)
-        data = response.json()
-        return data.get("company", "Unknown Manufacturer")
-    except:
-        return "Lookup Failed"
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("company", "Unknown Manufacturer")
+    except requests.RequestException:
+        pass  # Ignore errors
+
+    # Fallback: Extract first 6 characters of MAC (OUI) and guess
+    oui_prefix = mac_address[:8].upper()
+    known_vendors = {
+        "00:1A:79": "Cisco",
+        "00:17:3F": "Apple",
+        "FC:A1:3E": "Samsung",
+        "00:25:9C": "Dell",
+        "AC:CF:5C": "Huawei",
+        "20:37:06": "HP",
+    }
+    return known_vendors.get(oui_prefix, "Unknown Manufacturer")
+
 
 def get_device_name(ip):
     """Retrieves the hostname (device name) if available."""
@@ -23,6 +37,33 @@ def get_device_name(ip):
         return socket.gethostbyaddr(ip)[0]
     except socket.herror:
         return "Unknown"
+    
+def get_ttl(ip):
+    """Gets the TTL value by sending an ICMP packet (handles no response)."""
+    try:
+        pkt = sr1(IP(dst=ip)/ICMP(), timeout=2, verbose=0)
+        return pkt.ttl if pkt else "Unknown"
+    except Exception:
+        return "Unknown"
+    
+def get_device_type(ip, mac):
+    """Determines the device type based on MAC and TTL values."""
+    manufacturer = get_manufacturer(mac)
+    ttl = get_ttl(ip)
+
+    if "Apple" in manufacturer:
+        return "MacBook / iPhone"
+    elif "Dell" in manufacturer or "Lenovo" in manufacturer:
+        return "Laptop / PC"
+    elif "TP-Link" in manufacturer or "Cisco" in manufacturer:
+        return "Router / Network Device"
+    elif ttl and ttl <= 64:
+        return "Linux / Android"
+    elif ttl and ttl <= 128:
+        return "Windows Device"
+    return "Unknown Device"
+    
+    
 
 def scan_network(network_ip, update_ui_callback):
     """Scans the network using ARP and updates the UI."""
@@ -38,8 +79,9 @@ def scan_network(network_ip, update_ui_callback):
             mac_address = received.hwsrc.upper()
             manufacturer = get_manufacturer(mac_address)
             device_name = get_device_name(ip)
+            device_type = get_device_type(ip, mac_address)
 
-            devices.append((ip, mac_address, manufacturer, device_name))
+            devices.append((ip, mac_address, manufacturer, device_name, device_type))
         
         if devices:
             print(f"✅ {len(devices)} Devices Found!")  # Debugging output
@@ -67,7 +109,7 @@ def create_devices_tab(parent):
     table_frame = ttk.Frame(frame)
     table_frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 
-    columns = ("IP Address", "MAC Address", "Manufacturer", "Device Name")
+    columns = ("IP Address", "MAC Address", "Manufacturer", "Device Name", "Device Type")
     device_tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=8)
 
     for col in columns:
