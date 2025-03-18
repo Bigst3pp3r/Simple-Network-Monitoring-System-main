@@ -348,4 +348,16 @@ def update_device_status(ip, status="disconnected"):
                 WHERE ip_address = ?
             """, (status, datetime.now(), ip))
             conn.commit()    
+            
+def get_logged_ips():
+    """
+    Fetches all logged IP addresses from the devices table.
+    
+    Returns:
+        List of IP addresses.
+    """
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT ip_address FROM devices")
+        return [row[0] for row in cursor.fetchall()]  # ✅ Returns a list of IPs           
         

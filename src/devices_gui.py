@@ -5,7 +5,7 @@ from scapy.all import ARP, Ether, srp, IP, ICMP, sr1
 import socket
 import requests
 import sqlite3
-from database.database import log_device, get_logged_devices, update_device_status
+from database.database import log_device, get_logged_devices, update_device_status, get_logged_ips
 # ✅ OUI API for MAC lookup
 OUI_LOOKUP_API = "https://api.maclookup.app/v2/macs/"
 
@@ -79,18 +79,26 @@ def get_device_type(ip, mac):
 
     
 
-def scan_network(network_ip, update_ui_callback):
-    """
-    Scans the network using ARP, logs devices into the database, and updates the UI.
+def is_device_logged(ip):
+    """Checks if a device with the given IP is already logged in the database."""
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(*) FROM logged_devices WHERE ip_address = ?", (ip,))
+        return cursor.fetchone()[0] > 0
 
-    Args:
-        network_ip (str): The network IP range (e.g., '192.168.1.0/24').
-        update_ui_callback (function): Function to update the UI with scanned results.
-    """
+
+# ✅ Global Variable for Auto-Scanning
+auto_scan_running = False  
+
+def scan_network(network_ip, update_ui_callback, scan_button):
+    """Scans the network using ARP, logs devices into the database, and updates the UI."""
     devices = []
     detected_ips = set()
 
     try:
+        # ✅ Show Scanning Status
+        scan_button.config(text="🔄 Scanning... Please Wait", state=tk.DISABLED)
+
         # Send ARP requests
         arp = ARP(pdst=network_ip)
         ether = Ether(dst="ff:ff:ff:ff:ff:ff")
@@ -103,32 +111,32 @@ def scan_network(network_ip, update_ui_callback):
             manufacturer = get_manufacturer(mac_address)
             device_name = get_device_name(ip)
             device_type = get_device_type(ip, mac_address)
+          
 
-            detected_ips.add(ip)  # Track active IPs
-            
-            # ✅ Log the device into the database (or update if it exists)
-            log_device(ip, mac_address, manufacturer, device_name, device_type, status="active")
+            detected_ips.add(ip)
+
+            # ✅ Check if device is new
+            if not is_device_logged(ip):
+                log_device(ip, mac_address, manufacturer, device_name, device_type, status="active")
+            else:
+                update_device_status(ip, status="active")  
 
             # ✅ Append to UI update list
             devices.append((ip, mac_address, manufacturer, device_name, device_type))
 
-        # ✅ Mark disconnected devices in the database
-        all_logged_devices = get_logged_devices()
-        for logged_device in all_logged_devices:
-            db_ip = logged_device[1]  # Get IP from database
-            if db_ip not in detected_ips:
-                update_device_status(db_ip, status="disconnected")
+        # ✅ Detect Disconnected Devices
+        for logged_ip in get_logged_ips():
+            if logged_ip not in detected_ips:
+                update_device_status(logged_ip, status="disconnected")
 
-        if devices:
-            print(f"✅ {len(devices)} Devices Found!")  # Debugging output
-        else:
-            print("⚠️ No devices detected.")
+        print(f"✅ {len(devices)} Devices Found!") if devices else print("⚠️ No devices detected.")
 
     except Exception as e:
         print(f"❌ Error during scan: {e}")
 
-    # ✅ Update UI after scanning
+    # ✅ Restore UI After Scanning
     update_ui_callback(devices)
+    scan_button.config(text="🔍 Scan Network", state=tk.NORMAL)
 
 
 def create_devices_tab(parent):
@@ -139,8 +147,12 @@ def create_devices_tab(parent):
     ttk.Label(frame, text="🖥️ Connected Devices", font=("Arial", 14, "bold")).pack(pady=5)
 
     # ✅ Scan Button
-    scan_button = ttk.Button(frame, text="🔍 Scan Network", command=lambda: start_scan_thread(update_table))
+    scan_button = ttk.Button(frame, text="🔍 Scan Network", command=lambda: start_scan_thread(update_table, scan_button))
     scan_button.pack(pady=5)
+
+    # ✅ Auto-Scan Button
+    auto_scan_button = ttk.Button(frame, text="▶ Start Scanning", command=lambda: toggle_auto_scan(auto_scan_button, scan_button))
+    auto_scan_button.pack(pady=5)
 
     # ✅ Table Frame
     table_frame = ttk.Frame(frame)
@@ -155,18 +167,11 @@ def create_devices_tab(parent):
         device_tree.heading(col, text=col, anchor=tk.CENTER)
         device_tree.column(col, width=150, anchor=tk.CENTER)
 
-    # ✅ Apply Row Stripes & Styling
-    style = ttk.Style()
-    style.configure("Treeview", font=("Arial", 10), rowheight=25)  # Adjust row height
-    style.configure("Treeview.Heading", font=("Arial", 11, "bold"))  # Bold headers
-    style.map("Treeview", background=[("selected", "#3498db")])  # Row selection color
-    
-    # ✅ Add Vertical Scrollbar
+    # ✅ Scrollbars
     v_scroll = ttk.Scrollbar(table_frame, orient="vertical", command=device_tree.yview)
     device_tree.configure(yscrollcommand=v_scroll.set)
     v_scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
-    # ✅ Add Horizontal Scrollbar
     h_scroll = ttk.Scrollbar(table_frame, orient="horizontal", command=device_tree.xview)
     device_tree.configure(xscrollcommand=h_scroll.set)
     h_scroll.pack(fill=tk.X)
@@ -174,16 +179,16 @@ def create_devices_tab(parent):
     device_tree.pack(fill=tk.BOTH, expand=True)
 
     def update_table(devices):
-        """Updates the UI table with scanned devices, including their status."""
-        device_tree.delete(*device_tree.get_children())  # Clear table
+        """Updates the UI table with scanned devices."""
+        device_tree.delete(*device_tree.get_children())  
 
         if not devices:
-            print("⚠️ No devices to display.")  # Debugging
+            print("⚠️ No devices to display.")  
             return
 
         for device in devices:
             ip, mac, manufacturer, name, device_type = device
-            
+
             # ✅ Fetch device status from DB
             with sqlite3.connect("network_monitoring.db") as conn:
                 cursor = conn.cursor()
@@ -191,13 +196,29 @@ def create_devices_tab(parent):
                 status = cursor.fetchone()
             
             status_text = status[0] if status else "Unknown"
-
-            # ✅ Insert row with status
             device_tree.insert("", tk.END, values=(ip, mac, manufacturer, name, device_type, status_text))
 
-
-    def start_scan_thread(update_ui_callback):
+    def start_scan_thread(update_ui_callback, scan_button):
         """Starts the network scan in a separate thread to avoid UI freezing."""
-        threading.Thread(target=scan_network, args=("192.168.0.1/24", update_ui_callback), daemon=True).start()
+        threading.Thread(target=scan_network, args=("192.168.0.1/24", update_ui_callback, scan_button), daemon=True).start()
+
+    def toggle_auto_scan(auto_scan_button, scan_button):
+        """Starts or stops automatic network scanning."""
+        global auto_scan_running  
+        if auto_scan_running:
+            auto_scan_running = False
+            auto_scan_button.config(text="▶ Start Scanning")
+        else:
+            auto_scan_running = True
+            auto_scan_button.config(text="⏹ Stop Scanning")
+            auto_scan_loop(scan_button)
+
+    def auto_scan_loop(scan_button):
+        """Continuously scans the network at intervals."""
+        if auto_scan_running:
+            start_scan_thread(update_table, scan_button)  
+            frame.after(15000, lambda: auto_scan_loop(scan_button))  # Repeat every 15 sec
+
 
     return frame
+
