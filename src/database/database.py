@@ -37,23 +37,20 @@ def initialize_database():
             """
         )
         
-         #Create the network_devices table to store monitored devices
-        cursor.execute(
-            """
-            CREATE TABLE IF NOT EXISTS network_devices (
+         # ✅ Create `logged_devices` Table
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS logged_devices (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                ip_address TEXT NOT NULL,
-                mac_address TEXT NOT NULL UNIQUE,
+                ip_address TEXT UNIQUE,
+                mac_address TEXT UNIQUE,
                 manufacturer TEXT,
                 device_name TEXT,
                 device_type TEXT,
-                first_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                last_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                status TEXT
+                status TEXT CHECK(status IN ('active', 'disconnected')),
+                last_seen TIMESTAMP
             )
-            """
-        )
-
+        """)
+     
         conn.commit()
         print("Database initialized successfully.")
     except sqlite3.Error as e:
@@ -166,11 +163,6 @@ def get_packets_by_timeframe(timeframe):
             return []  # Invalid timeframe
         
         return cursor.fetchall()  # ✅ Returns properly formatted dates
-
-
-
-
-
 
 def save_alert(timestamp, message, type, severity="Medium"):
     """
@@ -299,54 +291,61 @@ def get_alerts_by_date_range(start_date, end_date):
      
 
                 
-def log_device(ip, mac, manufacturer, device_name, device_type, status="connected"):
+def log_device(ip, mac, manufacturer, name, device_type, status="active"):
     """
-    Logs or updates a network device in the database.
+    Logs a device in the database or updates its status if it exists.
 
-    Parameters:
-    ip (str): IP address of the device.
-    mac (str): MAC address of the device.
-    manufacturer (str): Manufacturer of the device.
-    device_name (str): Device hostname.
-    device_type (str): Type of device.
-    status (str): Connection status (default: "connected").
+    Args:
+        ip (str): IP Address
+        mac (str): MAC Address
+        manufacturer (str): Device Manufacturer
+        name (str): Hostname (if available)
+        device_type (str): Device type (e.g., Laptop, Router)
+        status (str): "active" or "disconnected"
     """
-    try:
-        conn = sqlite3.connect("network_monitoring.db")
+    with sqlite3.connect("network_monitoring.db") as conn:
         cursor = conn.cursor()
+        
+        # ✅ Check if the device already exists
+        cursor.execute("SELECT id FROM logged_devices WHERE mac_address = ?", (mac,))
+        existing = cursor.fetchone()
 
-        # Check if the device already exists
-        cursor.execute(
-            "SELECT id FROM network_devices WHERE mac_address = ?",
-            (mac,),
-        )
-        device = cursor.fetchone()
-
-        if device:
-            # Update the last seen timestamp and status if the device already exists
-            cursor.execute(
-                """
-                UPDATE network_devices 
-                SET last_seen = CURRENT_TIMESTAMP, status = ? 
+        if existing:
+            # ✅ Update device status & last seen
+            cursor.execute("""
+                UPDATE logged_devices 
+                SET status = ?, last_seen = ?
                 WHERE mac_address = ?
-                """,
-                (status, mac),
-            )
+            """, (status, datetime.now(), mac))
         else:
-            # Insert a new record for a new device
-            cursor.execute(
-                """
-                INSERT INTO network_devices (ip_address, mac_address, manufacturer, device_name, device_type, status)
-                VALUES (?, ?, ?, ?, ?, ?)
-                """,
-                (ip, mac, manufacturer, device_name, device_type, status),
-            )
+            # ✅ Insert new device
+            cursor.execute("""
+                INSERT INTO logged_devices (ip_address, mac_address, manufacturer, device_name, device_type, status, last_seen)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (ip, mac, manufacturer, name, device_type, status, datetime.now()))
 
         conn.commit()
-    except sqlite3.Error as e:
-        print(f"Error logging device: {e}")
-    finally:
-        conn.close()
+def get_logged_devices():
+    """Fetches all logged devices from the database."""
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM logged_devices")
+        return cursor.fetchall()
 
+def update_device_status(ip, status="disconnected"):
+        """
+        Updates the device's status in the database.
 
-     
+        Args:
+            ip (str): IP Address
+            status (str): "active" or "disconnected"
+        """
+        with sqlite3.connect("network_monitoring.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                UPDATE logged_devices 
+                SET status = ?, last_seen = ?
+                WHERE ip_address = ?
+            """, (status, datetime.now(), ip))
+            conn.commit()    
+        
