@@ -29,7 +29,7 @@ tabs = {
     "📡 Packets": create_packets_tab(main_content),  # ✅ Add Packets Tab
     "🚨 Alerts": create_alerts_tab(main_content),
     "🖥️Devices": create_devices_tab(main_content),
-    "⚙ Settings": create_settings_tab(main_content),
+    "⚙ Settings": create_settings_tab(main_content), 
     
 }
 
