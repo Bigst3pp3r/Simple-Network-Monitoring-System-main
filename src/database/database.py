@@ -294,14 +294,6 @@ def get_alerts_by_date_range(start_date, end_date):
 def log_device(ip, mac, manufacturer, name, device_type, status="active"):
     """
     Logs a device in the database or updates its status if it exists.
-
-    Args:
-        ip (str): IP Address
-        mac (str): MAC Address
-        manufacturer (str): Device Manufacturer
-        name (str): Hostname (if available)
-        device_type (str): Device type (e.g., Laptop, Router)
-        status (str): "active" or "disconnected"
     """
     with sqlite3.connect("network_monitoring.db") as conn:
         cursor = conn.cursor()
@@ -325,6 +317,7 @@ def log_device(ip, mac, manufacturer, name, device_type, status="active"):
             """, (ip, mac, manufacturer, name, device_type, status, datetime.now()))
 
         conn.commit()
+
 def get_logged_devices():
     """Fetches all logged devices from the database."""
     with sqlite3.connect("network_monitoring.db") as conn:
@@ -333,31 +326,23 @@ def get_logged_devices():
         return cursor.fetchall()
 
 def update_device_status(ip, status="disconnected"):
-        """
-        Updates the device's status in the database.
-
-        Args:
-            ip (str): IP Address
-            status (str): "active" or "disconnected"
-        """
-        with sqlite3.connect("network_monitoring.db") as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                UPDATE logged_devices 
-                SET status = ?, last_seen = ?
-                WHERE ip_address = ?
-            """, (status, datetime.now(), ip))
-            conn.commit()    
-            
-def get_logged_ips():
     """
-    Fetches all logged IP addresses from the devices table.
-    
-    Returns:
-        List of IP addresses.
+    Updates the device's status in the database.
     """
     with sqlite3.connect("network_monitoring.db") as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT ip_address FROM devices")
-        return [row[0] for row in cursor.fetchall()]  # ✅ Returns a list of IPs           
-        
+        cursor.execute("""
+            UPDATE logged_devices 
+            SET status = ?, last_seen = ?
+            WHERE ip_address = ?
+        """, (status, datetime.now(), ip))
+        conn.commit()
+
+def get_logged_ips():
+    """
+    Fetches all logged IP addresses from the logged_devices table.
+    """
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT ip_address FROM logged_devices")  # ✅ Ensure the correct table is used
+        return [row[0] for row in cursor.fetchall()]  # ✅ Returns a list of IPs

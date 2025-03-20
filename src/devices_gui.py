@@ -6,6 +6,7 @@ import socket
 import requests
 import sqlite3
 from database.database import log_device
+from datetime import datetime
 
 # ✅ OUI API for MAC lookup
 OUI_LOOKUP_API = "https://api.maclookup.app/v2/macs/"
@@ -60,47 +61,67 @@ def get_device_type(ip, mac):
 auto_scan_running = False  
 
 def scan_network(network_ip, update_ui_callback, scan_button):
-    """Scans the network and updates the database with active and disconnected devices."""
-    devices = []
+    """Scans the network and updates the database without removing inactive devices."""
     active_macs = set()
 
-    try:
-        scan_button.config(text="🔄 Scanning... Please wait", state=tk.DISABLED)
+    if not network_ip or "/" not in network_ip:
+        print("❌ Invalid network IP format. Example: '192.168.1.0/24'")
+        return
 
-        arp = ARP(pdst=network_ip)
-        ether = Ether(dst="ff:ff:ff:ff:ff:ff")
-        packet = ether / arp
-        result = srp(packet, timeout=2, verbose=0)[0]
+    def scan():
+        try:
+            scan_button.config(text="🔄 Scanning... Please wait", state=tk.DISABLED)
+            
+            arp = ARP(pdst=network_ip)
+            ether = Ether(dst="ff:ff:ff:ff:ff:ff")
+            packet = ether / arp
+            result = srp(packet, timeout=2, verbose=0)[0]
 
-        for sent, received in result:
-            ip = received.psrc
-            mac_address = received.hwsrc.upper()
-            manufacturer = get_manufacturer(mac_address)
-            device_name = get_device_name(ip)
-            device_type = get_device_type(ip, mac_address)
+            with sqlite3.connect("network_monitoring.db") as conn:
+                cursor = conn.cursor()
 
-            active_macs.add(mac_address)
-            devices.append((ip, mac_address, manufacturer, device_name, device_type, "Active"))
+                for sent, received in result:
+                    ip = received.psrc
+                    mac_address = received.hwsrc.upper()
+                    manufacturer = get_manufacturer(mac_address)
+                    device_name = get_device_name(ip)
+                    device_type = get_device_type(ip, mac_address)
+                    last_seen = datetime.now()
 
-            # ✅ Log device in database
-            log_device(ip, mac_address, manufacturer, device_name, device_type, "Active")
+                    active_macs.add(mac_address)
 
-        # ✅ Check for disconnected devices
-        with sqlite3.connect("network_monitoring.db") as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT mac_address FROM logged_devices WHERE status = 'Active'")
-            logged_macs = {row[0] for row in cursor.fetchall()}
+                    cursor.execute("SELECT id FROM logged_devices WHERE mac_address = ?", (mac_address,))
+                    existing = cursor.fetchone()
 
-            for mac in logged_macs - active_macs:
-                cursor.execute("UPDATE logged_devices SET status = 'Inactive', last_seen = CURRENT_TIMESTAMP WHERE mac_address = ?", (mac,))
+                    if existing:
+                        cursor.execute("""
+                            UPDATE logged_devices 
+                            SET status = 'Active', last_seen = ?, ip_address = ?, manufacturer = ?, device_name = ?, device_type = ?
+                            WHERE mac_address = ?
+                        """, (last_seen, ip, manufacturer, device_name, device_type, mac_address))
+                    else:
+                        cursor.execute("""
+                            INSERT INTO logged_devices (ip_address, mac_address, manufacturer, device_name, device_type, status, last_seen) 
+                            VALUES (?, ?, ?, ?, ?, 'Active', ?)
+                        """, (ip, mac_address, manufacturer, device_name, device_type, last_seen))
+
+                    conn.commit()
+
+                cursor.execute("SELECT mac_address FROM logged_devices WHERE status = 'Active'")
+                logged_macs = {row[0] for row in cursor.fetchall()}
+
+                for mac in logged_macs - active_macs:
+                    cursor.execute("UPDATE logged_devices SET status = 'Inactive' WHERE mac_address = ?", (mac,))
                 conn.commit()
+                
+        except Exception as e:
+            print(f"❌ Error during scan: {e}")
 
-    except Exception as e:
-        print(f"❌ Error during scan: {e}")
+        update_ui_callback()  # ✅ Update UI with the new statuses
+        scan_button.config(text="🔍 Scan Network", state=tk.NORMAL)
 
-    update_ui_callback(devices)
-    scan_button.config(text="🔍 Scan Network", state=tk.NORMAL)
-
+    # Run scan in a separate thread to prevent UI freezing
+    threading.Thread(target=scan, daemon=True).start()
 
 def create_devices_tab(parent):
     """Creates the devices GUI tab."""
@@ -140,23 +161,34 @@ def create_devices_tab(parent):
     h_scroll.pack(fill=tk.X)
 
     device_tree.pack(fill=tk.BOTH, expand=True)
+    def update_table():
+        """Fetches all devices from the database and updates the UI."""
+        
+        device_tree.delete(*device_tree.get_children())  # Clear table before inserting new data
 
-    def update_table(devices):
-        """Updates the UI table with scanned devices and applies status colors."""
-        device_tree.delete(*device_tree.get_children())  
+        with sqlite3.connect("network_monitoring.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT ip_address, mac_address, manufacturer, device_name, device_type, status FROM logged_devices")
+            devices = cursor.fetchall()
 
         if not devices:
-            print("⚠️ No devices to display.")  
+            print("⚠️ No devices found in the database.")
             return
 
         for device in devices:
             ip, mac, manufacturer, name, device_type, status = device
-            color = "green" if status == "Active" else "red"
-            device_tree.insert("", tk.END, values=(ip, mac, manufacturer, name, device_type, status), tags=(status,))
-        
+            
+            # ✅ Normalize status inside the loop (Fixes the NameError issue)
+            normalized_status = "Active" if status.lower() == "active" else "Inactive"
+            
+            color = "green" if normalized_status == "Active" else "red"
+            device_tree.insert("", tk.END, values=(ip, mac, manufacturer, name, device_type, normalized_status), tags=(normalized_status,))
+
         # ✅ Apply color tags
         device_tree.tag_configure("Active", foreground="green")
         device_tree.tag_configure("Inactive", foreground="red")
+
+
 
     def start_scan_thread(update_ui_callback, scan_button):
         """Starts the network scan in a separate thread to avoid UI freezing."""
