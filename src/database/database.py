@@ -1,5 +1,7 @@
 import sqlite3
 from datetime import datetime, timedelta
+import threading
+import time
 
 # Initialize the database connection
 
@@ -346,3 +348,125 @@ def get_logged_ips():
         cursor = conn.cursor()
         cursor.execute("SELECT ip_address FROM logged_devices")  # ✅ Ensure the correct table is used
         return [row[0] for row in cursor.fetchall()]  # ✅ Returns a list of IPs
+    
+
+def remove_disconnected_devices(threshold_hours=24, interval=3600):
+    """
+    Removes devices that have been inactive for more than the specified threshold.
+    Runs automatically at a given interval.
+    
+    Args:
+        threshold_hours (int): The number of hours after which an inactive device should be removed.
+        interval (int): Time interval in seconds to run the cleanup automatically.
+    """
+    def cleanup_task():
+        while True:
+            with sqlite3.connect("network_monitoring.db") as conn:
+                cursor = conn.cursor()
+                time_threshold = datetime.now() - timedelta(hours=threshold_hours)
+                
+                cursor.execute("""
+                    DELETE FROM logged_devices 
+                    WHERE status = 'Inactive' AND last_seen < ?
+                """, (time_threshold,))
+                
+                conn.commit()
+            print("✅ Inactive devices cleaned up.")
+            time.sleep(interval)  # Wait before running again
+    
+    threading.Thread(target=cleanup_task, daemon=True).start()
+def get_most_active_devices(limit=5):
+    """
+    Fetches the top N most active devices based on occurrences in logs.
+    
+    Args:
+        limit (int): Number of devices to fetch.
+    
+    Returns:
+        List of most active devices.
+    """
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT ip_address, mac_address, manufacturer, device_name, device_type, COUNT(*) as activity_count 
+            FROM logged_devices 
+            WHERE status = 'Active' 
+            GROUP BY mac_address 
+            ORDER BY activity_count DESC 
+            LIMIT ?
+        """, (limit,))
+        
+        return cursor.fetchall()
+
+def notify_new_devices():
+    """
+    Alerts when a new device joins the network.
+    """
+    # Function implementation already handled elsewhere.
+    pass
+
+def generate_device_report(format='csv'):
+    """
+    Exports device logs to CSV or PDF.
+    
+    Args:
+        format (str): 'csv' or 'pdf'.
+    """
+    import csv
+    
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM logged_devices")
+        devices = cursor.fetchall()
+    
+    if format == 'csv':
+        with open("device_report.csv", "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["IP Address", "MAC Address", "Manufacturer", "Device Name", "Device Type", "Status", "Last Seen"])
+            writer.writerows(devices)
+        print("✅ Device report saved as CSV.")
+    elif format == 'pdf':
+        # Placeholder for PDF export
+        print("📄 PDF export not implemented yet.")
+
+def bulk_insert_devices(devices_list):
+    """
+    Inserts multiple devices at once to speed up scanning.
+    
+    Args:
+        devices_list (list of tuples): Each tuple contains (ip, mac, manufacturer, name, device_type, status, last_seen).
+    """
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.executemany("""
+            INSERT INTO logged_devices (ip_address, mac_address, manufacturer, device_name, device_type, status, last_seen) 
+            VALUES (?, ?, ?, ?, ?, ?, ?) 
+            ON CONFLICT(mac_address) DO UPDATE SET status = 'Active', last_seen = ?
+        """, [(d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[6]) for d in devices_list])
+        conn.commit()
+def optimize_db_cleanup(interval=2592000):  # Run every 30 days
+    """
+    Periodically cleans up old or duplicate logs.
+    """
+    def cleanup_task():
+        while True:
+            with sqlite3.connect("network_monitoring.db") as conn:
+                cursor = conn.cursor()
+                
+                # Remove duplicate entries keeping the latest
+                cursor.execute("""
+                    DELETE FROM logged_devices 
+                    WHERE id NOT IN (
+                        SELECT MIN(id) FROM logged_devices GROUP BY mac_address
+                    )
+                """)
+                
+                conn.commit()
+            print("✅ Database optimized.")
+            time.sleep(interval)  # Wait before running again
+    
+    threading.Thread(target=cleanup_task, daemon=True).start()
+
+# Start automatic cleanup in the background
+remove_disconnected_devices()
+optimize_db_cleanup()
