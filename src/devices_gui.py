@@ -5,7 +5,7 @@ from scapy.all import ARP, Ether, srp, IP, ICMP, sr1
 import socket
 import requests
 import sqlite3
-from database.database import log_device
+from database.database import log_device, get_most_active_devices
 from datetime import datetime
 
 # ✅ OUI API for MAC lookup
@@ -122,6 +122,54 @@ def scan_network(network_ip, update_ui_callback, scan_button):
 
     # Run scan in a separate thread to prevent UI freezing
     threading.Thread(target=scan, daemon=True).start()
+    
+def show_most_active_devices():
+    """Displays a compact pop-up showing the most active devices."""
+    top = tk.Toplevel()
+    top.title("Most Active Devices")
+    top.geometry("500x300")  # ✅ Set a fixed size (width x height)
+
+    # Center the pop-up on screen
+    top.update_idletasks()
+    screen_width = top.winfo_screenwidth()
+    screen_height = top.winfo_screenheight()
+    x = (screen_width // 2) - (500 // 2)  # Center horizontally
+    y = (screen_height // 2) - (300 // 2)  # Center vertically
+    top.geometry(f"+{x}+{y}")
+
+    label = tk.Label(top, text="Most Active Devices", font=("Arial", 12, "bold"))
+    label.pack(pady=5)
+
+    # Fetch data
+    most_active = get_most_active_devices(limit=5)
+
+    # Create a compact table
+    tree = ttk.Treeview(top, columns=("IP", "MAC", "Name", "Type", "Activity"), show="headings", height=5)
+    tree.pack(pady=5, padx=10)
+
+    # Define column headings
+    columns = [("IP", "IP Address"), ("MAC", "MAC Address"), ("Name", "Device Name"), 
+               ("Type", "Device Type"), ("Activity", "Activity Count")]
+    
+    for col, heading in columns:
+        tree.heading(col, text=heading)
+        tree.column(col, width=90, anchor="center")  # ✅ Set fixed column width
+
+    # Insert data
+    for device in most_active:
+        tree.insert("", "end", values=device)
+
+    # Close button
+    close_button = ttk.Button(top, text="Close", command=top.destroy)
+    close_button.pack(pady=10)
+
+    # Prevent resizing
+    top.resizable(False, False)  # ✅ Disable resizing
+
+
+
+        
+ 
 
 def create_devices_tab(parent):
     """Creates the devices GUI tab."""
@@ -137,10 +185,18 @@ def create_devices_tab(parent):
     # ✅ Auto-Scan Button
     auto_scan_button = ttk.Button(frame, text="▶ Start Auto-Scanning", command=lambda: toggle_auto_scan(auto_scan_button, scan_button))
     auto_scan_button.pack(pady=5)
+    
+    device_frame = ttk.Frame(frame)
+    device_frame.pack(fill="both", expand=True)
+    
+     # ✅ Most Active Devices Button (Opens Modal)
+    most_active_button = ttk.Button(device_frame, text="Most Active Devices", command=show_most_active_devices)
+    most_active_button.pack(pady=10)
+        
 
     # ✅ Table Frame
     table_frame = ttk.Frame(frame)
-    table_frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+    table_frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)   
 
     # ✅ Define Columns
     columns = ("IP Address", "MAC Address", "Manufacturer", "Device Name", "Device Type", "Status")
@@ -161,6 +217,8 @@ def create_devices_tab(parent):
     h_scroll.pack(fill=tk.X)
 
     device_tree.pack(fill=tk.BOTH, expand=True)
+    
+    # ✅ Update Table
     def update_table():
         """Fetches all devices from the database and updates the UI."""
         
@@ -189,7 +247,8 @@ def create_devices_tab(parent):
         device_tree.tag_configure("Inactive", foreground="red")
 
 
-
+  
+            
     def start_scan_thread(update_ui_callback, scan_button):
         """Starts the network scan in a separate thread to avoid UI freezing."""
         threading.Thread(target=scan_network, args=("192.168.0.1/24", update_ui_callback, scan_button), daemon=True).start()
@@ -212,3 +271,14 @@ def create_devices_tab(parent):
             frame.after(15000, lambda: auto_scan_loop(scan_button))  # Repeat every 15 sec
 
     return frame
+
+
+
+
+
+
+
+
+
+
+
