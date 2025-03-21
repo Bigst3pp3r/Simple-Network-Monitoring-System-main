@@ -417,29 +417,30 @@ def notify_new_devices():
             cursor.execute("UPDATE logged_devices SET is_new = 0 WHERE is_new = 1")
             conn.commit()
 
-def generate_device_report(format='csv'):
-    """
-    Exports device logs to CSV or PDF.
-    
-    Args:
-        format (str): 'csv' or 'pdf'.
-    """
+def generate_device_report(file_path):
     import csv
-    
-    with sqlite3.connect("network_monitoring.db") as conn:
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM logged_devices")
-        devices = cursor.fetchall()
-    
-    if format == 'csv':
-        with open("device_report.csv", "w", newline="") as file:
+    try:
+        with sqlite3.connect("network_monitoring.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM logged_devices")
+            devices = cursor.fetchall()
+
+        if not devices:
+            print("⚠ No data found to export!")
+            return False  # Return False if no data
+
+        with open(file_path, "w", newline="") as file:
             writer = csv.writer(file)
-            writer.writerow(["IP Address", "MAC Address", "Manufacturer", "Device Name", "Device Type", "Status", "Last Seen"])
+            writer.writerow(["Count", "IP Address", "MAC Address", "Manufacturer", "Device Name", "Device Type", "Status", "Last Seen"])
             writer.writerows(devices)
-        print("✅ Device report saved as CSV.")
-    elif format == 'pdf':
-        # Placeholder for PDF export
-        print("📄 PDF export not implemented yet.")
+
+        print(f"✅ Report saved at: {file_path}")
+        return True  # Return True if successful
+
+    except Exception as e:
+        print(f"❌ Error saving report: {e}")
+        return False
+
 
 def bulk_insert_devices(devices_list):
     """

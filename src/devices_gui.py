@@ -1,12 +1,13 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox, filedialog
 import threading
 from scapy.all import ARP, Ether, srp, IP, ICMP, sr1
 import socket
 import requests
 import sqlite3
-from database.database import log_device, get_most_active_devices
+from database.database import log_device, get_most_active_devices, generate_device_report
 from datetime import datetime
+
 
 # ✅ OUI API for MAC lookup
 OUI_LOOKUP_API = "https://api.maclookup.app/v2/macs/"
@@ -179,6 +180,17 @@ def show_new_device_popup(device):
     
     ttk.Button(popup, text="OK", command=popup.destroy).pack(pady=10)
 
+# ✅ Save Report Function
+def save_report():
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".csv",
+        filetypes=[("CSV Files", "*.csv"), ("All Files", "*.*")],
+        title="Save Device Report"
+    )
+    
+    if file_path:  # If user selects a location
+        generate_device_report(file_path)
+        messagebox.showinfo("Success", f"Report saved successfully!\n📂 {file_path}")
         
  
 
@@ -228,6 +240,10 @@ def create_devices_tab(parent):
     h_scroll.pack(fill=tk.X)
 
     device_tree.pack(fill=tk.BOTH, expand=True)
+    
+    # ✅ Report Button
+    report_button = ttk.Button(frame, text="📄 Generate CSV Report", command=save_report)
+    report_button.pack(pady=10)
     
     # ✅ Update Table
     def update_table():
