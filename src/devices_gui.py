@@ -166,7 +166,18 @@ def show_most_active_devices():
     # Prevent resizing
     top.resizable(False, False)  # ✅ Disable resizing
 
-
+def show_new_device_popup(device):
+    """Displays a pop-up window with new device details."""
+    popup = tk.Toplevel()
+    popup.title("New Device Detected")
+    popup.geometry("400x250")
+    
+    ttk.Label(popup, text=f"New Device Detected!", font=("Arial", 14, "bold")).pack(pady=10)
+    
+    details = f"IP: {device[0]}\nMAC: {device[1]}\nManufacturer: {device[2]}\nDevice: {device[3]} ({device[4]})"
+    ttk.Label(popup, text=details, font=("Arial", 12)).pack(pady=10)
+    
+    ttk.Button(popup, text="OK", command=popup.destroy).pack(pady=10)
 
         
  
@@ -186,13 +197,13 @@ def create_devices_tab(parent):
     auto_scan_button = ttk.Button(frame, text="▶ Start Auto-Scanning", command=lambda: toggle_auto_scan(auto_scan_button, scan_button))
     auto_scan_button.pack(pady=5)
     
+    # ✅ Most Active Devices Button (Opens Modal)
     device_frame = ttk.Frame(frame)
-    device_frame.pack(fill="both", expand=True)
-    
-     # ✅ Most Active Devices Button (Opens Modal)
+    device_frame.pack(fill=tk.X, pady=2)
+
+    # ✅ Most Active Devices Button (Opens Modal)
     most_active_button = ttk.Button(device_frame, text="Most Active Devices", command=show_most_active_devices)
-    most_active_button.pack(pady=10)
-        
+    most_active_button.pack(side=tk.LEFT, pady=2.5)
 
     # ✅ Table Frame
     table_frame = ttk.Frame(frame)

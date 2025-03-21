@@ -2,7 +2,6 @@ import sqlite3
 from datetime import datetime, timedelta
 import threading
 import time
-
 # Initialize the database connection
 
 def initialize_database():
@@ -397,13 +396,26 @@ def get_most_active_devices(limit=5):
         """, (limit,))
         
         return cursor.fetchall()
-
 def notify_new_devices():
-    """
-    Alerts when a new device joins the network.
-    """
-    # Function implementation already handled elsewhere.
-    pass
+    from devices_gui import show_new_device_popup  # Import inside function to avoid circular import
+
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT ip_address, mac_address, manufacturer, device_name, device_type 
+            FROM logged_devices WHERE is_new = 1
+        """)
+        new_devices = cursor.fetchall()
+    
+    if new_devices:
+        for device in new_devices:
+            show_new_device_popup(device)  # ✅ No circular import
+
+        # Mark devices as acknowledged
+        with sqlite3.connect("network_monitoring.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("UPDATE logged_devices SET is_new = 0 WHERE is_new = 1")
+            conn.commit()
 
 def generate_device_report(format='csv'):
     """
