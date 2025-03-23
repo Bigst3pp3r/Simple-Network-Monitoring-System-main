@@ -7,6 +7,11 @@ import requests
 import sqlite3
 from database.database import log_device, get_most_active_devices, generate_device_report
 from datetime import datetime
+import networkx as nx
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+
 
 
 # ✅ OUI API for MAC lookup
@@ -192,6 +197,60 @@ def save_report():
         generate_device_report(file_path)
         messagebox.showinfo("Success", f"Report saved successfully!\n📂 {file_path}")
         
+def create_network_graph(frame):
+    """Displays a force-directed network graph with edges representing communication."""
+    G = nx.Graph()
+
+    with sqlite3.connect("network_monitoring.db") as conn:
+        cursor = conn.cursor()
+        
+        # ✅ Fetch devices
+        cursor.execute("SELECT ip_address, mac_address, status FROM logged_devices")
+        devices = cursor.fetchall()
+
+        # ✅ Fetch communications (Modify this query if needed)
+        cursor.execute("""
+            SELECT source_ip, destination_ip FROM packets
+            WHERE protocol != 'ARP'  -- Ignore ARP, focus on real communication
+        """)
+        connections = cursor.fetchall()
+    
+    # ✅ Add nodes (devices)
+    for ip, mac, status in devices:
+        G.add_node(ip, label=ip, active=(status == "Active"))
+
+    # ✅ Add edges (connections)
+    for src_ip, dst_ip in connections:
+        if src_ip in G.nodes and dst_ip in G.nodes:
+            G.add_edge(src_ip, dst_ip)
+
+    # ✅ Create figure
+    fig = Figure(figsize=(6, 4))
+    ax = fig.add_subplot(111)
+    pos = nx.spring_layout(G)  # Force-directed layout
+
+    # ✅ Draw Nodes
+    active_nodes = [n for n, attr in G.nodes(data=True) if attr["active"]]
+    inactive_nodes = [n for n, attr in G.nodes(data=True) if not attr["active"]]
+
+    nx.draw(G, pos, ax=ax, node_size=500, with_labels=True, labels=nx.get_node_attributes(G, "label"))
+    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=active_nodes, node_color="green")
+    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=inactive_nodes, node_color="red")
+
+    # ✅ Draw Edges
+    nx.draw_networkx_edges(G, pos, ax=ax, edge_color="blue")
+
+    # ✅ Embed in Tkinter
+    for widget in frame.winfo_children():
+        widget.destroy()  # Clear old graph before redrawing
+
+    canvas = FigureCanvasTkAgg(fig, master=frame)
+    canvas.draw()
+    canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+
+    # ✅ Refresh every 10 seconds for real-time updates
+    frame.after(10000, lambda: create_network_graph(frame))
+
  
 
 def create_devices_tab(parent):
@@ -245,6 +304,13 @@ def create_devices_tab(parent):
     report_button = ttk.Button(frame, text="📄 Generate CSV Report", command=save_report)
     report_button.pack(pady=10)
     
+    # ✅ Frame for the network graph
+    graph_frame = ttk.Frame(frame)
+    graph_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+    # ✅ Call function to generate the network graph
+    create_network_graph(graph_frame)
+
     # ✅ Update Table
     def update_table():
         """Fetches all devices from the database and updates the UI."""
