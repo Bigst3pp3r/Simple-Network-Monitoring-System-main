@@ -203,9 +203,9 @@ def create_network_graph(frame):
 
     with sqlite3.connect("network_monitoring.db") as conn:
         cursor = conn.cursor()
-        
-        # ✅ Fetch devices
-        cursor.execute("SELECT ip_address, mac_address, status FROM logged_devices")
+
+        # ✅ Fetch devices (Ensure status is not NULL)
+        cursor.execute("SELECT ip_address, mac_address, COALESCE(status, '') FROM logged_devices")
         devices = cursor.fetchall()
 
         # ✅ Fetch communications (Modify this query if needed)
@@ -214,24 +214,32 @@ def create_network_graph(frame):
             WHERE protocol != 'ARP'  -- Ignore ARP, focus on real communication
         """)
         connections = cursor.fetchall()
-    
+
     # ✅ Add nodes (devices)
     for ip, mac, status in devices:
-        G.add_node(ip, label=ip, active=(status == "Active"))
+        is_active = (status.lower() == "active")  # Normalize status check
+        G.add_node(ip, label=ip, active=is_active)
 
-    # ✅ Add edges (connections)
-    for src_ip, dst_ip in connections:
-        if src_ip in G.nodes and dst_ip in G.nodes:
-            G.add_edge(src_ip, dst_ip)
+    def is_valid_ip(ip):
+        """Ignore multicast (224.x - 239.x) & broadcast (255.255.255.255)."""
+        return ip and not ip.startswith(("239.", "224.")) and ip != "255.255.255.255"
+
+    # ✅ Add edges only for valid device communications
+    for src, dst in connections:
+        if is_valid_ip(src) and is_valid_ip(dst) and src in G and dst in G:
+            G.add_edge(src, dst)
 
     # ✅ Create figure
     fig = Figure(figsize=(6, 4))
     ax = fig.add_subplot(111)
     pos = nx.spring_layout(G)  # Force-directed layout
 
+    # ✅ Debug: Ensure all nodes have attributes
+    print("Nodes in Graph:", G.nodes(data=True))
+
     # ✅ Draw Nodes
-    active_nodes = [n for n, attr in G.nodes(data=True) if attr["active"]]
-    inactive_nodes = [n for n, attr in G.nodes(data=True) if not attr["active"]]
+    active_nodes = [n for n, attr in G.nodes(data=True) if attr.get("active", False)]
+    inactive_nodes = [n for n, attr in G.nodes(data=True) if not attr.get("active", False)]
 
     nx.draw(G, pos, ax=ax, node_size=500, with_labels=True, labels=nx.get_node_attributes(G, "label"))
     nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=active_nodes, node_color="green")
@@ -250,7 +258,6 @@ def create_network_graph(frame):
 
     # ✅ Refresh every 10 seconds for real-time updates
     frame.after(10000, lambda: create_network_graph(frame))
-
  
 
 def create_devices_tab(parent):
@@ -364,14 +371,4 @@ def create_devices_tab(parent):
             frame.after(15000, lambda: auto_scan_loop(scan_button))  # Repeat every 15 sec
 
     return frame
-
-
-
-
-
-
-
-
-
-
 

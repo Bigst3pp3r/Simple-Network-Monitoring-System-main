@@ -457,6 +457,7 @@ def bulk_insert_devices(devices_list):
             ON CONFLICT(mac_address) DO UPDATE SET status = 'Active', last_seen = ?
         """, [(d[0], d[1], d[2], d[3], d[4], d[5], d[6], d[6]) for d in devices_list])
         conn.commit()
+        
 def optimize_db_cleanup(interval=2592000):  # Run every 30 days
     """
     Periodically cleans up old or duplicate logs.
