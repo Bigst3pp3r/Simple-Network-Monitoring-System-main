@@ -218,7 +218,7 @@ def create_network_graph(frame):
     # ✅ Add nodes (devices)
     for ip, mac, status in devices:
         is_active = (status.lower() == "active")  # Normalize status check
-        G.add_node(ip, label=ip, active=is_active)
+        G.add_node(ip, label=ip, active=is_active, mac=mac)
 
     def is_valid_ip(ip):
         """Ignore multicast (224.x - 239.x) & broadcast (255.255.255.255)."""
@@ -232,21 +232,25 @@ def create_network_graph(frame):
     # ✅ Create figure
     fig = Figure(figsize=(6, 4))
     ax = fig.add_subplot(111)
-    pos = nx.spring_layout(G)  # Force-directed layout
+    pos = nx.spring_layout(G, k=0.6)  # Adjust layout for better spacing
 
     # ✅ Debug: Ensure all nodes have attributes
     print("Nodes in Graph:", G.nodes(data=True))
 
-    # ✅ Draw Nodes
+    # ✅ Separate nodes by status
     active_nodes = [n for n, attr in G.nodes(data=True) if attr.get("active", False)]
     inactive_nodes = [n for n, attr in G.nodes(data=True) if not attr.get("active", False)]
 
-    nx.draw(G, pos, ax=ax, node_size=500, with_labels=True, labels=nx.get_node_attributes(G, "label"))
-    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=active_nodes, node_color="green")
-    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=inactive_nodes, node_color="red")
+    # ✅ Draw Nodes
+    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=active_nodes, node_color="green", node_size=500, edgecolors="black")
+    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=inactive_nodes, node_color="red", node_size=500, edgecolors="black")
 
     # ✅ Draw Edges
-    nx.draw_networkx_edges(G, pos, ax=ax, edge_color="blue")
+    nx.draw_networkx_edges(G, pos, ax=ax, edge_color="blue", width=2)
+
+    # ✅ Draw Labels with MAC addresses
+    labels = {node: f"{attr['label']}\n{attr['mac']}" for node, attr in G.nodes(data=True)}
+    nx.draw_networkx_labels(G, pos, labels=labels, font_size=8, ax=ax)
 
     # ✅ Embed in Tkinter
     for widget in frame.winfo_children():
