@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.3">
+  <diagram name="Page-1" id="mZfDu2OdAP6P9Ze1jKG5">
+    <mxGraphModel dx="1434" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="j93ZyQIM0atcmIjquwag-2" value="System starts" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-4" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeWidth=2;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="395.75" y="95.75" width="48.5" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-6" value="Monitoring Starts in background" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="330" y="130" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-8" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeWidth=2;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="395.75" y="220" width="48.5" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-9" value="Login Page {User logs crediatials}" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="330" y="250" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-10" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeWidth=2;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="397" y="340" width="46" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-11" value="True Credentials&lt;div&gt;?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="355" y="370" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-13" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="410" y="518" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-15" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeWidth=2;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="485" y="425" width="45" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-16" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="490" y="430" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-17" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;strokeWidth=2;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="397" y="508" width="46" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-18" value="User doesn&#39;t exist&amp;nbsp;&lt;div&gt;{Try again}&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="512.5" y="400" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="j93ZyQIM0atcmIjquwag-19" value="System opens and displays dashboard {Live charts, Starts packet capture}" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="330" y="540" width="180" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
