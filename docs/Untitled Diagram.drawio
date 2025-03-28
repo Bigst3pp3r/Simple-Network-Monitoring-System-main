@@ -155,7 +155,7 @@
           <mxGeometry x="760" y="778" width="40" height="30" as="geometry" />
         </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-18" value="Displays devices&lt;div&gt;connected in&lt;/div&gt;&lt;div&gt;a table&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="820" y="910" width="120" height="60" as="geometry" />
+          <mxGeometry x="830" y="880" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RZd6v6jU7zZwrwbBFV0q-20" target="RZd6v6jU7zZwrwbBFV0q-18">
           <mxGeometry relative="1" as="geometry" />
