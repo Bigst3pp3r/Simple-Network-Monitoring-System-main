@@ -11,6 +11,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+import matplotlib.patches as mpatches
 
 
 
@@ -205,7 +206,7 @@ def create_network_graph(frame):
         cursor = conn.cursor()
 
         # ✅ Fetch devices (Ensure status is not NULL)
-        cursor.execute("SELECT ip_address, mac_address, COALESCE(status, '') FROM logged_devices")
+        cursor.execute("SELECT ip_address, mac_address, device_type, COALESCE(status, '') FROM logged_devices")
         devices = cursor.fetchall()
 
         # ✅ Fetch communications (Modify this query if needed)
@@ -215,10 +216,19 @@ def create_network_graph(frame):
         """)
         connections = cursor.fetchall()
 
+    # ✅ Define color mapping
+    device_colors = {
+        "Router": "red",
+        "PC": "blue",
+        "Mobile": "green",
+        "Unknown": "gray"
+    }
+
     # ✅ Add nodes (devices)
-    for ip, mac, status in devices:
+    for ip, mac, device_type, status in devices:
         is_active = (status.lower() == "active")  # Normalize status check
-        G.add_node(ip, label=ip, active=is_active, mac=mac)
+        color = device_colors.get(device_type, "gray")  # Default to gray
+        G.add_node(ip, label=ip, active=is_active, mac=mac, color=color)
 
     def is_valid_ip(ip):
         """Ignore multicast (224.x - 239.x) & broadcast (255.255.255.255)."""
@@ -237,13 +247,9 @@ def create_network_graph(frame):
     # ✅ Debug: Ensure all nodes have attributes
     print("Nodes in Graph:", G.nodes(data=True))
 
-    # ✅ Separate nodes by status
-    active_nodes = [n for n, attr in G.nodes(data=True) if attr.get("active", False)]
-    inactive_nodes = [n for n, attr in G.nodes(data=True) if not attr.get("active", False)]
-
-    # ✅ Draw Nodes
-    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=active_nodes, node_color="green", node_size=500, edgecolors="black")
-    nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=inactive_nodes, node_color="red", node_size=500, edgecolors="black")
+    # ✅ Draw Nodes with color coding
+    for node, attr in G.nodes(data=True):
+        nx.draw_networkx_nodes(G, pos, ax=ax, nodelist=[node], node_color=attr["color"], node_size=500, edgecolors="black")
 
     # ✅ Draw Edges
     nx.draw_networkx_edges(G, pos, ax=ax, edge_color="blue", width=2)
@@ -251,6 +257,10 @@ def create_network_graph(frame):
     # ✅ Draw Labels with MAC addresses
     labels = {node: f"{attr['label']}\n{attr['mac']}" for node, attr in G.nodes(data=True)}
     nx.draw_networkx_labels(G, pos, labels=labels, font_size=8, ax=ax)
+
+    # ✅ Add Legend (Key)
+    legend_patches = [mpatches.Patch(color=color, label=label) for label, color in device_colors.items()]
+    ax.legend(handles=legend_patches, title="Device Types", loc="upper right")
 
     # ✅ Embed in Tkinter
     for widget in frame.winfo_children():
@@ -262,7 +272,7 @@ def create_network_graph(frame):
 
     # ✅ Refresh every 10 seconds for real-time updates
     frame.after(10000, lambda: create_network_graph(frame))
- 
+
 
 def create_devices_tab(parent):
     """Creates the devices GUI tab."""

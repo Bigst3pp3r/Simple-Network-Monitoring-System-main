@@ -2,6 +2,7 @@ import sqlite3
 from datetime import datetime, timedelta
 import threading
 import time
+from collections import Counter
 # Initialize the database connection
 
 def initialize_database():
@@ -164,6 +165,25 @@ def get_packets_by_timeframe(timeframe):
             return []  # Invalid timeframe
         
         return cursor.fetchall()  # ✅ Returns properly formatted dates
+    
+    
+def fetch_top_active_ips(limit=5):
+    connection = sqlite3.connect("network_monitoring.db")
+    cursor = connection.cursor()
+    
+    query = """
+    SELECT source_ip FROM packets
+    UNION ALL
+    SELECT destination_ip FROM packets
+    """
+    cursor.execute(query)
+    ip_list = [row[0] for row in cursor.fetchall()]
+    connection.close()
+    
+    counter = Counter(ip_list)
+    top_ips = counter.most_common(5)
+    return top_ips
+  
 
 def save_alert(timestamp, message, type, severity="Medium"):
     """

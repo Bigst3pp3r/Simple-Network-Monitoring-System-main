@@ -1,11 +1,31 @@
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog, messagebox, Toplevel
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.ticker as mticker  # ✅ "K" formatting for large numbers
 import numpy as np
-from database.database import get_packets_by_timeframe
+from database.database import get_packets_by_timeframe, fetch_top_active_ips  # ✅ Import database functions
 
+
+def show_top_active_ips():
+    top_ips = fetch_top_active_ips(5)
+    
+    if not top_ips:
+        return
+    
+    # Create popup window
+    popup = tk.Toplevel()
+    popup.title("Top 5 Active IPs")
+    
+    # Create table
+    tree = ttk.Treeview(popup, columns=("IP Address", "Packet Count"), show="headings")
+    tree.heading("IP Address", text="IP Address")
+    tree.heading("Packet Count", text="Packet Count")
+    tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+    
+    # Insert data into table
+    for ip, packet_count in top_ips:
+        tree.insert("", tk.END, values=(ip, packet_count))
 # Define protocol colors for grouped bar chart
 PROTOCOL_COLORS = {
     "TCP": "red",
@@ -69,17 +89,10 @@ def create_packets_tab(parent):
     v_scroll.pack(side=tk.RIGHT, fill=tk.Y)
     packet_tree.pack(fill=tk.BOTH, expand=True)
     
-
-    # ✅ Top IP Activity Table (Now Smaller)
-    ip_activity_frame = ttk.LabelFrame(data_container, text="Top 5 Active IPs")
-    ip_activity_frame.pack(side=tk.RIGHT, fill=tk.Y, padx=5, pady=5)
-
-    ip_tree = ttk.Treeview(ip_activity_frame, columns=("IP", "Packets"), show="headings", height=5)
-    ip_tree.heading("IP", text="IP Address", anchor=tk.W)
-    ip_tree.heading("Packets", text="Packet Count", anchor=tk.W)
-    ip_tree.column("IP", width=100, anchor=tk.W)
-    ip_tree.column("Packets", width=50, anchor=tk.W)
-    ip_tree.pack(fill=tk.BOTH, expand=True)
+   
+    
+    show_ips_button = ttk.Button(frame, text="Show Top Active IPs", command=show_top_active_ips)
+    show_ips_button.pack(pady=10)
 
     # ✅ Graph - Grouped Bar Chart
     graph_frame = ttk.Frame(frame)
@@ -125,15 +138,6 @@ def create_packets_tab(parent):
             pps_value = (total_packets - last_packet_count[0]) / (REFRESH_INTERVAL / 1000)
             last_packet_count[0] = total_packets  # Update stored count
             pps_label.config(text=f" | Packets Per Second: {pps_value:.2f}")
-
-            # ✅ Update Top 5 IPs Table
-            ip_counts = {}
-            for _, src_ip, _, _, _ in packets:
-                ip_counts[src_ip] = ip_counts.get(src_ip, 0) + 1
-
-            ip_tree.delete(*ip_tree.get_children())
-            for ip, count in sorted(ip_counts.items(), key=lambda x: x[1], reverse=True)[:5]:
-                ip_tree.insert("", tk.END, values=(ip, count))
 
             # ✅ Populate Packets Table
             for timestamp, src_ip, dest_ip, protocol, length in packets:
@@ -190,8 +194,8 @@ def create_packets_tab(parent):
         # ✅ Ensure on_hover() is only attached once
         canvas.mpl_connect("motion_notify_event", on_hover)
 
-        
-        
+  
+            
     def export_chart():
                 """Save the current graph as an image."""
                 file_path = filedialog.asksaveasfilename(defaultextension=".png",
