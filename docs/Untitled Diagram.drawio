@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.3">
   <diagram name="Page-1" id="mZfDu2OdAP6P9Ze1jKG5">
-    <mxGraphModel dx="1434" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="1">
+    <mxGraphModel dx="1434" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -118,14 +118,20 @@
         <mxCell id="j93ZyQIM0atcmIjquwag-55" value="yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="960" y="468" width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="RZd6v6jU7zZwrwbBFV0q-1" value="Device Window" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="480" y="710" width="120" height="60" as="geometry" />
+        <mxCell id="RZd6v6jU7zZwrwbBFV0q-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RZd6v6jU7zZwrwbBFV0q-1" target="RZd6v6jU7zZwrwbBFV0q-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd6v6jU7zZwrwbBFV0q-1" value="Device Window {Displays table with live devices info,&lt;div&gt;a network graph showing communication btwn devices,&lt;/div&gt;&lt;div&gt;Live updates and alerts window if new device is detected}&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="700" width="340" height="70" as="geometry" />
         </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-4" value="No Alerts continues&amp;nbsp;&lt;div&gt;monitoring&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="910" y="300" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-6" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="960" y="358" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd6v6jU7zZwrwbBFV0q-9" value="One time network scan/autoscan button&lt;div&gt;refreshing 10secs&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="430" y="800" width="170" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
