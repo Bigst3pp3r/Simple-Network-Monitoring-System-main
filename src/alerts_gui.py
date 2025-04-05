@@ -3,6 +3,7 @@ from tkinter import ttk, filedialog
 from tkcalendar import DateEntry
 import csv
 import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from database.database import get_alerts_by_timeframe, get_alerts_by_date_range
 
@@ -37,16 +38,22 @@ def create_alerts_tab(parent):
     severity_dropdown = ttk.Combobox(filter_frame, textvariable=severity_var, 
                                    values=["All", "High", "Medium", "Low"], width=10)
     severity_dropdown.pack(side=tk.LEFT, padx=5)
+    
+    # Calculate default dates (today and 1 month ago)
+    default_end_date = datetime.now()
+    default_start_date = default_end_date - timedelta(days=30)  # 1 month ago
 
-    # Date Range Selection (unchanged)
+    # Date Range Selection
     ttk.Label(filter_frame, text="📅 From:").pack(side=tk.LEFT, padx=5)
     start_date = DateEntry(filter_frame, width=10, background="darkblue", 
-                         foreground="white", date_pattern="yyyy-mm-dd")
+                        foreground="white", date_pattern="yyyy-mm-dd")
+    start_date.set_date(default_start_date)  # Set to 1 month ago
     start_date.pack(side=tk.LEFT, padx=5)
 
     ttk.Label(filter_frame, text="📅 To:").pack(side=tk.LEFT, padx=5)
     end_date = DateEntry(filter_frame, width=10, background="darkblue", 
                         foreground="white", date_pattern="yyyy-mm-dd")
+    end_date.set_date(default_end_date)  # Set to today
     end_date.pack(side=tk.LEFT, padx=5)
 
     # Apply & Reset Buttons (unchanged)
@@ -177,8 +184,11 @@ def create_alerts_tab(parent):
         """Reset all filters and refresh alerts."""
         search_entry.delete(0, tk.END)
         severity_var.set("All")
-        start_date.set_date(start_date._date)
-        end_date.set_date(end_date._date)
+        # Reset to default 1-month range
+        default_end_date = datetime.now()
+        default_start_date = default_end_date - timedelta(days=30)
+        start_date.set_date(default_start_date)
+        end_date.set_date(default_end_date)
         time_var.set("Day")
         update_alerts()
 

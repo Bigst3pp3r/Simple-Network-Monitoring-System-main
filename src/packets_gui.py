@@ -48,7 +48,7 @@ def create_packets_tab(parent):
     filter_frame.pack(fill=tk.X, padx=5, pady=5)
 
     ttk.Label(filter_frame, text="📅 View Packets:", font=("Arial", 10)).pack(side=tk.LEFT, padx=5)
-    timeframe_var = tk.StringVar(value="Weekly")  # ✅ Default view is Weekly
+    timeframe_var = tk.StringVar(value="All-Time")  # ✅ Default view is Weekly
     timeframe_dropdown = ttk.Combobox(filter_frame, textvariable=timeframe_var, values=["Daily", "Weekly", "Monthly", "All-Time"])
     timeframe_dropdown.pack(side=tk.LEFT, padx=5)
 
