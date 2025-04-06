@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.1.3">
   <diagram name="Page-1" id="mZfDu2OdAP6P9Ze1jKG5">
-    <mxGraphModel dx="1494" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="1" adaptiveColors="auto">
+    <mxGraphModel dx="3303" dy="1123" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="1" adaptiveColors="auto">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -62,7 +62,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="j93ZyQIM0atcmIjquwag-35" value="Resumes Monitoring&lt;div&gt;{Packet capture}&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
-          <mxGeometry x="750" y="440" width="120" height="60" as="geometry" />
+          <mxGeometry x="760" y="440" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;flowAnimation=0;" parent="1" source="j93ZyQIM0atcmIjquwag-30" target="j93ZyQIM0atcmIjquwag-35" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -73,14 +73,14 @@
         <mxCell id="illrxyckAcGluFV2msGg-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=0;" parent="1" source="j93ZyQIM0atcmIjquwag-40" target="illrxyckAcGluFV2msGg-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="PzL1q4u_fuBuIhD4x_bE-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="j93ZyQIM0atcmIjquwag-40" target="RZd6v6jU7zZwrwbBFV0q-37">
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="PzL1q4u_fuBuIhD4x_bE-46" target="RZd6v6jU7zZwrwbBFV0q-37">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="j93ZyQIM0atcmIjquwag-40" target="PzL1q4u_fuBuIhD4x_bE-25">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="j93ZyQIM0atcmIjquwag-40" value="Packets and Alerts logged into db" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#cdeb8b;strokeColor=#36393d;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="465" y="630" width="60" height="60" as="geometry" />
+          <mxGeometry x="630" y="618" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="j93ZyQIM0atcmIjquwag-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=0;" parent="1" source="j93ZyQIM0atcmIjquwag-51" target="j93ZyQIM0atcmIjquwag-53" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -89,7 +89,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="j93ZyQIM0atcmIjquwag-51" value="packets&amp;nbsp;&lt;div&gt;above 1000&lt;/div&gt;&lt;div&gt;?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
-          <mxGeometry x="910" y="398" width="80" height="80" as="geometry" />
+          <mxGeometry x="940" y="440" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.008;exitY=0.367;exitDx=0;exitDy=0;exitPerimeter=0;curved=0;entryX=1;entryY=0.15;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="j93ZyQIM0atcmIjquwag-53" target="j93ZyQIM0atcmIjquwag-40">
           <mxGeometry relative="1" as="geometry">
@@ -98,10 +98,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="j93ZyQIM0atcmIjquwag-53" value="Captures packets rate &amp;amp; logs into database" style="whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;rounded=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
-          <mxGeometry x="1030" y="570" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="j93ZyQIM0atcmIjquwag-55" value="yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="960" y="468" width="40" height="30" as="geometry" />
+          <mxGeometry x="820" y="530" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-4" value="No Alerts continues&amp;nbsp;&lt;div&gt;monitoring&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="910" y="280" width="120" height="60" as="geometry" />
@@ -139,8 +136,14 @@
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-22" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rounded=1;" parent="1" vertex="1">
           <mxGeometry x="720" y="880" width="40" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="RZd6v6jU7zZwrwbBFV0q-37" target="PzL1q4u_fuBuIhD4x_bE-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="RZd6v6jU7zZwrwbBFV0q-37" target="PzL1q4u_fuBuIhD4x_bE-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-37" value="Packet Window&amp;nbsp;&lt;div&gt;{Displays packets on a&lt;/div&gt;&lt;div&gt;&amp;nbsp;table as they&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;get captured&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;with filters, visualizes data in graph,&amp;nbsp;&lt;/div&gt;&lt;div&gt;pop-up table with top 5 ips,&amp;nbsp;&lt;/div&gt;&lt;div&gt;exports packets and graphs&lt;/div&gt;" style="strokeWidth=2;html=1;shape=parallelogram;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;perimeter=parallelogramPerimeter;arcSize=12;size=0.23;" parent="1" vertex="1">
-          <mxGeometry x="30" y="700" width="260" height="100" as="geometry" />
+          <mxGeometry x="30" y="710" width="340" height="90" as="geometry" />
         </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;flowAnimation=0;" parent="1" source="RZd6v6jU7zZwrwbBFV0q-42" target="RZd6v6jU7zZwrwbBFV0q-44" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -211,14 +214,17 @@
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-64" value="Queries data to&lt;div&gt;process top 5 devices by&amp;nbsp;&lt;/div&gt;&lt;div&gt;occurence&lt;/div&gt;" style="strokeWidth=2;html=1;shape=label;whiteSpace=wrap;rounded=1;absoluteArcSize=1;arcSize=14;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="890" y="1200" width="100" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="RZd6v6jU7zZwrwbBFV0q-67" target="PzL1q4u_fuBuIhD4x_bE-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="RZd6v6jU7zZwrwbBFV0q-67" value="Displays&lt;div&gt;Network graph&lt;/div&gt;&lt;div&gt;(Nodes &amp;amp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;Edges&lt;/div&gt;" style="strokeWidth=2;html=1;shape=parallelogram;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;perimeter=parallelogramPerimeter;arcSize=12;size=0.23;" parent="1" vertex="1">
-          <mxGeometry x="1000" y="960" width="140" height="50" as="geometry" />
+          <mxGeometry x="920" y="1030" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="illrxyckAcGluFV2msGg-3" target="PzL1q4u_fuBuIhD4x_bE-30">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="illrxyckAcGluFV2msGg-3" value="Queries data from database to display in the Alerts window for table &amp;amp; to generate the graph" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="1180" y="650" width="150" height="70" as="geometry" />
+          <mxGeometry x="1020" y="660" width="150" height="70" as="geometry" />
         </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-9" value="CMD prompt to create admin account" style="whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;rounded=1;" vertex="1" parent="1">
           <mxGeometry x="770" y="128" width="120" height="60" as="geometry" />
@@ -255,11 +261,14 @@
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-25" value="Device Window {Displays table&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;with live devices data,&lt;/span&gt;&lt;div&gt;&amp;nbsp;a network graph showing&amp;nbsp;&lt;/div&gt;&lt;div&gt;communication btwn devices,&amp;nbsp;&lt;/div&gt;&lt;div&gt;Live updates and alerts window&lt;/div&gt;&lt;div&gt;&amp;nbsp;if new device is detected}&lt;/div&gt;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="390" y="720" width="320" height="90" as="geometry" />
         </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="PzL1q4u_fuBuIhD4x_bE-28" target="PzL1q4u_fuBuIhD4x_bE-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-28" value="Displays&lt;div&gt;&amp;nbsp;devices&lt;div&gt;connected in&lt;/div&gt;&lt;div&gt;a table&lt;/div&gt;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="900" y="1048" width="160" height="62" as="geometry" />
+          <mxGeometry x="1030" y="1080" width="160" height="62" as="geometry" />
         </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-30" value="Alerts Window&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;{Displays Alerts&amp;nbsp;&lt;/span&gt;&lt;div&gt;table, with filters (severity), graphs,&lt;/div&gt;&lt;div&gt;Export data (graphs as png, Alerts&lt;/div&gt;&lt;div&gt;in csv file)&lt;/div&gt;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.07500000000000001;fillColor=#dae8fc;gradientColor=#7ea6e0;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="1210" y="452" width="210" height="78" as="geometry" />
+          <mxGeometry x="1000" y="550" width="250" height="78" as="geometry" />
         </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="PzL1q4u_fuBuIhD4x_bE-33" target="j93ZyQIM0atcmIjquwag-20">
           <mxGeometry relative="1" as="geometry" />
@@ -275,6 +284,30 @@
         </mxCell>
         <mxCell id="PzL1q4u_fuBuIhD4x_bE-38" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="420" y="384" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="1" source="j93ZyQIM0atcmIjquwag-40" target="PzL1q4u_fuBuIhD4x_bE-46">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="465" y="660" as="sourcePoint" />
+            <mxPoint x="160" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-46" value="Queries data in packets as they arrive to display&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="210" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-51" value="Export Graph as png file" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="948" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-53" value="Export Table data as .csv file" style="whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1255" y="1068" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-55" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="970" y="518" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-56" value="Export packet data as a .csv file" style="whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="-140" y="690" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PzL1q4u_fuBuIhD4x_bE-58" value="Export packet graph as png file" style="whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;rounded=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="827" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
