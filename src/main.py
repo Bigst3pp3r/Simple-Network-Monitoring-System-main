@@ -1,5 +1,5 @@
 import threading
-from filters import get_filter_choice, manage_thresholds  # Import filter and threshold functions
+
 from logging_setup import setup_logging
 from packet_processing import process_packet
 from traffic_summary import display_summary

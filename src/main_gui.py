@@ -10,6 +10,8 @@ from alerts_gui import create_alerts_tab
 from packets_gui import create_packets_tab
 from devices_gui import create_devices_tab
 
+
+
 def create_users_table():
     connection = sqlite3.connect("network_monitoring.db")
     cursor = connection.cursor()

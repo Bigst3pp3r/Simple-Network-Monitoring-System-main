@@ -21,7 +21,10 @@ def initialize_database():
                 timestamp TEXT NOT NULL,
                 source_ip TEXT NOT NULL,
                 destination_ip TEXT NOT NULL,
-                protocol TEXT NOT NULL
+                protocol TEXT NOT NULL,
+                FOREIGN KEY (source_ip) REFERENCES logged_devices(ip_address) ON DELETE CASCADE,
+                FOREIGN KEY (destination_ip) REFERENCES logged_devices(ip_address) ON DELETE CASCADE
+
             )
             """
         )
@@ -40,18 +43,23 @@ def initialize_database():
         )
         
          # ✅ Create `logged_devices` Table
-        cursor.execute("""
+        cursor.execute(
+            """
             CREATE TABLE IF NOT EXISTS logged_devices (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                ip_address TEXT UNIQUE,
-                mac_address TEXT UNIQUE,
+                ip_address TEXT UNIQUE NOT NULL,
+                mac_address TEXT UNIQUE NOT NULL,
                 manufacturer TEXT,
                 device_name TEXT,
                 device_type TEXT,
-                status TEXT CHECK(status IN ('active', 'disconnected')),
+                status TEXT CHECK(status IN ('active', 'disconnected')) NOT NULL,
+                first_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 last_seen TIMESTAMP
             )
-        """)
+            """
+        )
+        
+        
      
         conn.commit()
         print("Database initialized successfully.")

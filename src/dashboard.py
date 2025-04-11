@@ -7,6 +7,10 @@ import time
 from datetime import datetime
 import matplotlib.dates as mdates
 
+import os
+import signal
+import sys
+
 def create_dashboard_tab(parent, monitor):
     frame = tk.Frame(parent, bg="white")
 
@@ -17,6 +21,51 @@ def create_dashboard_tab(parent, monitor):
     summary_label.pack()
     summary_text = tk.Label(summary_frame, text="Packets: 0 | Alerts: 0", font=("Arial", 10), bg="#f0f0f0")
     summary_text.pack()
+    
+
+    def kill_everything():
+        """Completely terminate the application including GUI and console"""
+        try:
+            # 1. Stop monitoring first
+            monitor.state.is_active = False
+            
+            # 2. Perform any cleanup if available
+            if hasattr(monitor, 'cleanup'):
+                monitor.cleanup()
+            
+            # 3. Destroy the GUI window
+            parent.destroy()
+            
+            # 4. Completely terminate the process
+            if sys.platform == "win32":
+                # Windows specific termination
+                os.system('taskkill /F /PID ' + str(os.getpid()))
+            else:
+                # Unix/Linux/Mac termination
+                os.kill(os.getpid(), signal.SIGTERM)
+                
+        except Exception as e:
+            # If anything fails, try the most aggressive approach
+            os._exit(1)
+
+    def confirm_kill():
+        """Show confirmation dialog before terminating"""
+        if tk.messagebox.askyesno(
+            "Complete Shutdown",
+            "WARNING: This will completely close the application and console window.\nAre you sure?",
+            icon='warning'):
+            kill_everything()
+            
+    # Add the Kill System button with warning color
+    ttk.Button(frame, text="☠️ Kill System", 
+              command=confirm_kill,
+              style="Danger.TButton").pack(side=tk.TOP, padx=5)
+    
+    # Add style for the dangerous button
+    style = ttk.Style()
+    style.configure("Danger.TButton", foreground="black", background="red")
+
+    
     
     def toggle_monitoring():
         if monitor.state.is_active:
@@ -30,6 +79,9 @@ def create_dashboard_tab(parent, monitor):
     monitoring_status = tk.StringVar(value="Pause Monitoring")
     pause_button = ttk.Button(frame, textvariable=monitoring_status, command=toggle_monitoring)
     pause_button.pack(pady=5)
+    
+   
+
 
     # ✅ Create Matplotlib figure with subplots (modified for scaling)
     fig, axs = plt.subplots(2, 2, figsize=(8, 6))
@@ -132,4 +184,7 @@ def create_dashboard_tab(parent, monitor):
             tooltip_label.place_forget()
 
     update_charts()
+    
+    
+
     return frame
