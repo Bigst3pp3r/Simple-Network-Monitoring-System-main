@@ -92,3 +92,5 @@ python src/main_gui.py
 ├── src/database/              # Database files
 └── tests/                     # Unit tests
 ```
+
+### 🐢 Made with Python, curiosity, and a love for clean networks!
