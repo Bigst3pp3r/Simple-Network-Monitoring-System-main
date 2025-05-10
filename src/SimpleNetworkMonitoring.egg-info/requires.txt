@@ -1,0 +1,4 @@
+customtkinter
+pyshark
+matplotlib
+scapy

@@ -1,0 +1,3 @@
+[console_scripts]
+snm_cli = cli:main
+snm_gui = main_gui:main

@@ -1,0 +1,31 @@
+Metadata-Version: 2.4
+Name: SimpleNetworkMonitoring
+Version: 0.1.0
+Summary: A simple network monitoring tool.
+Home-page: https://github.com/Bigst3pp3r/Simple-Network-Monitoring-System-main
+Author: Manus AI
+Author-email: manus@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: customtkinter
+Requires-Dist: pyshark
+Requires-Dist: matplotlib
+Requires-Dist: scapy
+Dynamic: license-file
+
+# Simple-Network-Monitoring-System
+Real-Time Network Traffic Monitoring Tool
+This project is a modular, Python-based tool for real-time network traffic monitoring and analysis. It provides features such as:
+
+```python
+Packet inspection and logging with protocol mapping.
+User-defined filtering options (protocol, IP, port).
+Real-time traffic summaries with detailed statistics.
+Rotating log files for efficient and organized data storage.
+Scalable and modular architecture for easy customization and extension.
+Designed for educational and professional use, this tool is ideal for network enthusiasts and cybersecurity students exploring packet-level insights.
+```
