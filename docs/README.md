@@ -3,7 +3,7 @@
 
 ---
 
-## 🌈 Overview
+## Overview
 
 This project is a **modular, Python-based** tool for real-time network traffic monitoring and analysis.  
 Designed for **network enthusiasts** and **cybersecurity students**, it provides packet-level insights in a sleek way!
