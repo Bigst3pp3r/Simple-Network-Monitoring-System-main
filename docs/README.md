@@ -1,12 +1,69 @@
-# Simple-Network-Monitoring-System
-Real-Time Network Traffic Monitoring Tool
-This project is a modular, Python-based tool for real-time network traffic monitoring and analysis. It provides features such as:
+# 🐾 Simple Network Monitoring System  
+> Real-Time Network Traffic Monitoring Tool — Cute, Powerful, and Practical! 💻📊
 
-```python
-Packet inspection and logging with protocol mapping.
-User-defined filtering options (protocol, IP, port).
-Real-time traffic summaries with detailed statistics.
-Rotating log files for efficient and organized data storage.
-Scalable and modular architecture for easy customization and extension.
-Designed for educational and professional use, this tool is ideal for network enthusiasts and cybersecurity students exploring packet-level insights.
+---
+
+## 🌈 Overview
+
+This project is a **modular, Python-based** tool for real-time network traffic monitoring and analysis.  
+Designed for **network enthusiasts** and **cybersecurity students**, it provides packet-level insights in a sleek way!
+
+---
+
+## ✨ Key Features
+
+### 🔍 Packet Inspection
+- 📦 Protocol-based logging
+- 🎯 User-defined filters: protocol, IP, port
+
+### ⏱️ Real-Time Monitoring
+- 📈 Live traffic summaries
+- 🖥️ Device scanning and monitoring
+
+### 🚨 Alert System
+- 🔔 Custom threshold-based alerts
+- 🔥 Severity-level classification
+
+### 🧩 Modular Design
+- 🧱 Scalable and extendable modules
+- 🖥️ CLI & GUI support (`snm_cli`, `snm_gui`)
+
+### 🗃️ Database Setup
+- 🐬 SQLite-based
+- Tables: filters, thresholds, blacklists, status
+
+---
+
+## 🛠️ Installation
+
+### ✅ Prerequisites
+
+- 🐍 Python 3.x
+- 📦 Required packages listed in `requirements.txt`
+
+### 📥 Clone the Repository
+
+```bash
+git clone https://github.com/Bigst3pp3r/Simple-Network-Monitoring-System-main.git
+cd Simple-Network-Monitoring-System-main
 ```
+### 📦 Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 🚀 Usage
+🖥️ Command-Line Interface (CLI)
+Navigate to the project directory
+
+Run the main script:
+```bash
+python main.py
+```
+
+### 🎛️ CLI Options
+- Set Filters 🧪
+- Manage Thresholds ⚙️
+- Start Monitoring 📡
+- Scan Network 🌐
+- Monitor Devices 🕵️
