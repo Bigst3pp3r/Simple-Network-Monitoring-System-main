@@ -67,3 +67,28 @@ python main.py
 - Start Monitoring 📡
 - Scan Network 🌐
 - Monitor Devices 🕵️
+
+### 🧸 Graphical User Interface (GUI)
+Launch the GUI:
+```bash
+python src/main_gui.py
+```
+### 🖼️ GUI Features
+- 🔐 Login system (role-based access)
+- 🧭 Dashboard, settings, alerts, devices, packets
+- 🧵 Multi-threaded real-time monitoring
+
+### 🗂️ File Structure
+```bash
+📁 Simple-Network-Monitoring-System
+├── main.py                    # CLI entry point
+├── src/
+│   ├── main_gui.py            # GUI entry point
+│   ├── monitoring_core.py     # Core monitoring logic
+│   ├── filters.py             # Filter + DB logic
+│   ├── devices_gui.py         # Device GUI
+│   ├── alerts_gui.py          # Alerts GUI
+│   └── packets_gui.py         # Packets GUI
+├── src/database/              # Database files
+└── tests/                     # Unit tests
+```
