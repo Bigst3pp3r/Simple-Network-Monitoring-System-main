@@ -1,0 +1,3 @@
+[console_scripts]
+snm_cli = TheWatcher.cli: main
+snm_gui = TheWatcher.gui: main
