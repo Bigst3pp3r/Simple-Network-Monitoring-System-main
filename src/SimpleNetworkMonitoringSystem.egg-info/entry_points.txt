@@ -1,3 +1,0 @@
-[console_scripts]
-snm_cli = SimpleNetworkMonitoringSystem.cli: main
-snm_gui = SimpleNetworkMonitoringSystem.gui: main

@@ -1,3 +1,0 @@
-[console_scripts]
-snm_cli = Snms.cli: main
-snm_gui = Snms.gui: main
