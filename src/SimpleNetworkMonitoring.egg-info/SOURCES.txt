@@ -34,6 +34,12 @@ src/SimpleNetworkMonitoring.egg-info/dependency_links.txt
 src/SimpleNetworkMonitoring.egg-info/entry_points.txt
 src/SimpleNetworkMonitoring.egg-info/requires.txt
 src/SimpleNetworkMonitoring.egg-info/top_level.txt
+src/SimpleNetworkMonitoringSystem.egg-info/PKG-INFO
+src/SimpleNetworkMonitoringSystem.egg-info/SOURCES.txt
+src/SimpleNetworkMonitoringSystem.egg-info/dependency_links.txt
+src/SimpleNetworkMonitoringSystem.egg-info/entry_points.txt
+src/SimpleNetworkMonitoringSystem.egg-info/requires.txt
+src/SimpleNetworkMonitoringSystem.egg-info/top_level.txt
 src/__pycache__/alerts.cpython-312.pyc
 src/__pycache__/alerts_gui.cpython-312.pyc
 src/__pycache__/dashboard.cpython-312.pyc
