@@ -4,11 +4,11 @@ from tkinter import messagebox
 import sqlite3
 import bcrypt
 import threading
-from dashboard import create_dashboard_tab
-from settings_gui import create_settings_tab
-from alerts_gui import create_alerts_tab
-from packets_gui import create_packets_tab
-from devices_gui import create_devices_tab
+from .dashboard import create_dashboard_tab
+from .settings_gui import create_settings_tab
+from .alerts_gui import create_alerts_tab
+from .packets_gui import create_packets_tab
+from .devices_gui import create_devices_tab
 
 
 
@@ -77,7 +77,7 @@ def authenticate_user(username, password):
     return None
 
 def initialize_monitor():
-    from monitoring_core import NetworkMonitor
+    from .monitoring_core import NetworkMonitor
     return NetworkMonitor()
 
 def create_main_application(monitor):

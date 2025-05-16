@@ -1,15 +1,15 @@
 
 import threading
 from scapy.all import sniff
-from filters import get_filters
-from logging_setup import setup_logging
-from packet_processing import process_packet
-from monitor_state import MonitorState
-from alerts import check_alert_conditions
-from database.database import initialize_database
-from network_scanner import scan_network
-from real_time_monitor import monitor_network
-from traffic_summary import display_summary  # ✅ Import function
+from .filters import get_filters
+from .logging_setup import setup_logging
+from .packet_processing import process_packet
+from .monitor_state import MonitorState
+from .alerts import check_alert_conditions
+from .database.database import initialize_database
+from .network_scanner import scan_network
+from .real_time_monitor import monitor_network
+from .traffic_summary import display_summary  # ✅ Import function
 from database.database import get_alerts_by_severity  # Import database function
 
 class NetworkMonitor:

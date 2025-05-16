@@ -1,7 +1,7 @@
 # Functions for packet processing
 from scapy.layers.inet import IP
 from datetime import datetime
-from monitor_state import MonitorState
+from .monitor_state import MonitorState
 from database.database import save_packet  # Import save_packet from the database module
 
 # Protocol mapping for translating protocol numbers to names

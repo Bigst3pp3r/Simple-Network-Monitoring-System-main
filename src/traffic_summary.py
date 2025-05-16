@@ -1,8 +1,8 @@
 # Real-time traffic summary logic
 from datetime import datetime
-from monitor_state import MonitorState
+from .monitor_state import MonitorState
 import threading
-from alerts import check_alert_conditions  # Import the alert checking function
+from .alerts import check_alert_conditions  # Import the alert checking function
 import time
 
 

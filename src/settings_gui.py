@@ -1,11 +1,11 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from filters import (
+from .filters import (
     get_thresholds, update_thresholds, 
     get_blacklisted_ips, add_blacklisted_ip, remove_blacklisted_ip,
     get_filters, add_filter, remove_filter
 )
-from filters import (
+from .filters import (
     get_ip_filters, remove_ip_filter, add_ip_filter, # New functions
     get_filter_status, update_filter_status  # Enable/disable filters
 )

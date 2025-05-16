@@ -1,4 +1,4 @@
-from monitoring_core import NetworkMonitor
+from .monitoring_core import NetworkMonitor
 
 def main():
     monitor = NetworkMonitor()

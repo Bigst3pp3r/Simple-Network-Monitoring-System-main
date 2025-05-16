@@ -1,13 +1,14 @@
 import threading
 
-from logging_setup import setup_logging
-from packet_processing import process_packet
-from traffic_summary import display_summary
-from monitor_state import MonitorState
-from alerts import check_alert_conditions
+from .logging_setup import setup_logging
+from .packet_processing import process_packet
+from .traffic_summary import display_summary
+from .monitor_state import MonitorState
+from .alerts import check_alert_conditions
 from database.database import initialize_database, save_packet, save_alert
-from network_scanner import scan_network
-from real_time_monitor  import monitor_network
+from .network_scanner import scan_network
+from .real_time_monitor  import monitor_network
+
 
 
 def alert_monitor(state):
@@ -128,10 +129,10 @@ def main():
         choice = input("\nSelect an option (1-5): ")
 
         if choice == "1":
-            chosen_filter = get_filter_choice()
+            chosen_filter = get_filter_choice() # type: ignore
             print(f"Filter set: {chosen_filter}")
-        elif choice == "2":
-            manage_thresholds()
+            manage_thresholds()  # type: ignore # Ensure this function is defined or imported correctly
+            manage_thresholds() # type: ignore
         elif choice == "3":
             start_monitoring(chosen_filter)
         elif choice == "4":
